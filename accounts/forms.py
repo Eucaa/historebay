@@ -23,7 +23,7 @@ class UserRegistrationForm(UserCreationForm):  # Registered in views.py
 
     def clean_email(self):  # function to check whether an email and/ or username already exists in the database.
         email = self.cleaned_data.get('email')
-        username = self.cleaned_data.get('username')
+        username = self.cleaned_data.get('username')  # Not sure if .lower can be added here...
         if User.objects.filter(email=email).exculde(username=username):
             raise forms.ValidationError("Email address must be unique")
         return email

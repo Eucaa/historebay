@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required  # This will stop people who aren't logged in from accessing the page.
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.template.context_processors import csrf
 from .forms import UserLoginForm, UserRegistrationForm
+# from django.template.context_processors import csrf(csrf should work with importing this)
 # Create your views here.
 
 
@@ -17,7 +17,7 @@ def index(request):
 def logout(request):
     #  Log user out
     auth.logout(request)
-    messages.success(request, 'You have successfully been logged out!')
+    messages.success(request, 'Successfully logged out')
     return redirect(reverse('index'))
 
 
@@ -29,12 +29,13 @@ def login(request):
         login_form = UserLoginForm(request.POST)  # Create an instance of the user login form and pass it in the request.post as an other constructor so
                                                   # a new login form will be created with the data posted from the form on the UI.
         if login_form.is_valid():
-            user = auth.authenticate(username=request.POST['username'],
+            user = auth.authenticate(username=request.POST['username'] or
+                                     email=request.POST['email'],
                                      password=request.POST['password'])
 
             if user:
                 auth.login(user, request)
-                messages.success(request, "You have succesfully logged in.")
+                messages.success(request, "Succesfully logged in")
 
                 if request.GET and request.GET['next'] != '':
                     next = request.GET['next']
@@ -68,7 +69,8 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()  # Because the model (user=) is already specified inside of the meta class in the registration form (forms.py) it's not needed to specify model again here.
 
-            user = auth.authenticate(username=request.POST.get['username'],
+            user = auth.authenticate(username=request.POST.get['username'] or
+                                     email=request.POST.get['email'],
                                      password=request.POST.get['password1'])
 
             if user:
@@ -87,5 +89,5 @@ def registration(request):
 
 def user_profile(request):
     """User profile page"""
-    user = User.objects.get(email=request.user.email)  # Retrieve the user from the database. Where a user email is equal to whatever email is stored in the request object.
+    user = User.objects.filter(email=request.user.email)  # Retrieve the user from the database. Where a user email is equal to whatever email is stored in the request object.
     return render(request, 'profile.html', {'profile': user})
