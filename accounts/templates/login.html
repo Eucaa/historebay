@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}  <!--take the data from the base.html file--> 
+
+{% block page_title %}Login page{% endblock %}
+
+{% block page_heading %}User Login{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ login_form }}
+    <button type="submit">login</button>
+</form>
+
+<p><a href="{% url 'password_reset' %}">Forgot Password</a></p>  <!--The url is taken from the url_reset.py file-->
+
+{% endblock %}
