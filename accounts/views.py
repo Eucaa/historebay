@@ -29,7 +29,7 @@ def login(request):
         login_form = UserLoginForm(request.POST)  # Create an instance of the user login form and pass it in the request.post as an other constructor so
                                                   # a new login form will be created with the data posted from the form on the UI.
         if login_form.is_valid():
-            user = auth.authenticate(username=request.POST['username'] or
+            user = auth.authenticate(username=request.POST['username'],
                                      email=request.POST['email'],
                                      password=request.POST['password'])
 
@@ -69,7 +69,7 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()  # Because the model (user=) is already specified inside of the meta class in the registration form (forms.py) it's not needed to specify model again here.
 
-            user = auth.authenticate(username=request.POST.get['username'] or
+            user = auth.authenticate(username=request.POST.get['username'],
                                      email=request.POST.get['email'],
                                      password=request.POST.get['password1'])
 
