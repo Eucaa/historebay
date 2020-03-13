@@ -138,5 +138,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # This indicates that all media will be kept in a directory called media.
+MEDIA_URL = '/media/'  # The media URL that we refer to in our HTML will be /media/. So within the top-level URLs, urls will be imported from products as urls_products.
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
