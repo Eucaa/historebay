@@ -3,8 +3,8 @@ from .models import Product
 # Create your tests here.
 
 
-# class ItemTests(TestCase):
+class ProductTests(TestCase):
 
-#     def test_str(self):
-#         test_name = Product(name='belp')
-#         self.assertEqual(str(test_name), 'blep')
+    def test_str(self):
+        test_name = Product(name='An item')
+        self.assertEqual(str(test_name), 'An item')
