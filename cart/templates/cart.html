@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}  <!--take the data from the base.html file-->
+{% load static from staticfiles %} 
+{% load bootstrap_tags %}
+
+{% block content %}
+<div class="row row-flex">
+    {% for item in cart_items %}
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default"> <!--Different column sizes for different screen sizes.-->
+
+        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div><!--This will be enough to only show the images of the items that are in the cart.-->
+        <div class="caption">
+            <h3>{{ item.product.name }}</h3>  <!--This will show the name of the product, as inlcuded in the cart_item list (contexts.py).-->
+            <p class="product-description">{{ item.product.description }}</p>
+            <p>{{ item.product.price }}</p>
+            <p>
+            <!--Create a form, which will include an input where you can adjust the number of items that we wish to purchase.-->
+                <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
+                {% csrf_token %}  <!-- Bacause it's a form, it'll need an csrf-token -->
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">New Qty</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">Qty</div>
+                            <input name="quantity" type="number" min="0" max="999" class="form-control"/> <!--The minimum number is 0 to be able to adjust the quantity down to 0 to delete it from the cart.-->
+                            <div class="input-group-prepend">{{ item.quantity }}</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span><i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></span>Adjust</button>
+                </form>
+            </p>
+        </div>
+    </div>
+    {% endfor %} 
+</div>
+<div class="row">
+    <p>Total</p>
+    <p><span><i class="fa fa-eur fa-sm" aria-hidden="true"></i></span>{{ total }}</p>  <!--Shows the total amount of item in the cart.-->
+    <a href="{#{% url 'checkout' %}#}" class="btn btn-success" role="button"><span><i class="fa fa-check-square-o fa-sm" aria-hidden="true"></i></span>Checkout</a>
+</div>
+
+{% endblock %}
