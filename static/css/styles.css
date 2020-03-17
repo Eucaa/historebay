@@ -1,0 +1,56 @@
+
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+}
+
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-raduis: 9px;
+    -moz-border-raduis: 9px;
+    -o-border-raduis: 9px;
+    border-radius: 9px;
+}
+
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #B7950B;
+}
+
+.product {
+    background-size: contain;
+    background-position: center center; /* to make sure something is actuallly and really centered within a <div>*/
+    background-repeat: no-repeat; /* for non-tiling of small images.*/
+    width: 150px;
+    height: 150px;
+    margin: 0 auto; /* to center a <div> within the other <div>'s.*/
+}
+
+caption p {  /* specifies the `p` in the class='caption' */
+    word-wrap: break-word;  /*to prevent text-box overflow*/
+}
+
+.row.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.panel-default {
+    border-color: transparent;
+    padding: 0 10px;
+}
+
+.panel-body {
+    height: 100%;
+    border: 1 px solid #ddd;
+}
+
+.product-description {
+    min-height: 40px;  /* statement of min-height for product description */
+}
