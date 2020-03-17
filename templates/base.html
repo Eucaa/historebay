@@ -29,12 +29,14 @@
                                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
                             {% endif %}
-                            <a href="{#{% url 'view_cart' %}#}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
-                            <i class="fa fa-shopping-cart"></i> cart
-                            {% if product_count > 0 %}
-                            <label class="bagde badge-warning">{{ product_count }}</label>
-                            {% endif %}
-                            </a>
+                            <li>
+                                <a href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
+                                    <i class="fa fa-shopping-cart"></i>cart
+                                    {% if product_count > 0 %}
+                                    <label class="bagde badge-warning">{{ product_count }}</label>
+                                    {% endif %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +44,7 @@
             
                 <div class="row">
                     <div class="display">
-                        <form action="{#{% url 'search' %}#}" method="GET">
+                        <form action="{% url 'search' %}" method="GET">
                             <input type="text" name="q">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
                             <button type="submit">Search</button> 
                         </form>
@@ -52,17 +54,26 @@
         </nav>
         <hr>
         {% if messages %}
-        <div>
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        </div>
+            <div class="alert alert-info">
+                <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </div>
+            </div>
         {% endif %}
         <div>
         {% block content %}
             <!--Main area for content creation-->
         {% endblock %} 
         </div>
+            <hr>
+            <div class="card">
+                <div class="card-body">
+                    <p>Made by "add some stuff here"</p>
+                </div>
+            </div>
+        
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
