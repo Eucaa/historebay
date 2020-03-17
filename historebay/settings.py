@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import env
+if os.path.exists('env.py'):
+    import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'accounts',
     'products',
     'productType',
+    'cart',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'cart.contexts.cart_contents',  # Create a urls.py file in the cart folder.
             ],
         },
     },
@@ -140,6 +144,9 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # This indicates that all media will be kept in a directory called media.
 MEDIA_URL = '/media/'  # The media URL that we refer to in our HTML will be /media/. So within the top-level URLs, urls will be imported from products as urls_products.
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
