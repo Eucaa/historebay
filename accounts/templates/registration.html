@@ -10,7 +10,7 @@
     <legend>Create an account</legend>
     <p>If you already have an account, you can <a href="{% url 'login' %}">sign in here</a>.</p>
     {% csrf_token %}
-    {{ registration_form | as_bootstrap }}  <!--.as_p puts each label and input on a separate line. This also works for form.as_table and form.as_ul . Combined from: forms.py, views.py and urls.py--> 
+    {{ registration_form|as_bootstrap }}  <!--.as_p puts each label and input on a separate line. This also works for form.as_table and form.as_ul . Combined from: forms.py, views.py and urls.py--> 
     <button type="submit">Create account</button>
     </fieldset>
 </form>
