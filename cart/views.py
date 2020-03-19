@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -10,8 +11,20 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     """ Add a quantity of the specified product to the cart """
-    quantity = int(request.POST.get('quantity'))  # Gets an integer from the form(context.py-file). It gives the option to increase and decrease the number of items.
-                                                # When clicking on the `Add to Cart` button, the integer that's in the form will go to the cart as well.
+
+    quantityVal = request.POST.get('quantity')
+    if quantityVal == "":
+        messages.error(request, 'Add a quantity')
+        return redirect(reverse('index'))
+
+    try:
+        int(quantityVal)
+    except ValueError:
+        messages.error(request, 'Add a quantity')
+        return redirect(reverse('index'))
+
+    quantity = int(quantityVal)  # Gets an integer from the form(context.py-file). It gives the option to increase and decrease the number of items.
+
     cart = request.session.get('cart', {})  # The cart requests the existing cart (session) if there is one, or a blank dictionary if there is nothing. This is placed it the context.py file
     if id in cart:  # If-statement for adding two items with same id, without overwriting the value.
         cart[id] = int(cart[id]) + quantity  # This will add a new quantity to the excisting quantity.
