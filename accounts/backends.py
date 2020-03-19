@@ -10,15 +10,14 @@ class EmailAuth:
         """Get an instance of 'User' based off the username / email and verify the password."""
 
         try:  # Try to get a user by using User.objects.filter.
-            user = User.objects.filter(Q(username__exact=username_or_email) | Q(email__exact=username_or_email))
-            # user = User.objects.get(email=username)  # The user's email address will be the user's username.
+            #user = User.objects.filter(Q(username__exact=username_or_email) | Q(email__exact=username_or_email))
+            user = User.objects.get(username=username)
+            if user.check_password(password):  # If the password is available, return the user. If not, then return nothing.
+                return user
+            return None
 
-            if User.DoesNotExist:  # If the user does not exists, then return nothing.
-                return None
-
-        except user.check_password(password):  # If the password is available, return the user.
-
-            return User
+        except User.DoesNotExist:  # If the user does not exist, return a None as well.
+            return None
 
     def get_user(self, user_id):
         """Get a user instance"""
