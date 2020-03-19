@@ -19,12 +19,12 @@ class UserRegistrationForm(UserCreationForm):  # Registered in views.py
 
     class Meta:  # This inner (meta)class will provide info about the form. They can be used (amongst other feats) in Django to specify fields dat will be exposed in sending an email.
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ('email', 'username', 'password1', 'password2')
 
     def clean_email(self):  # function to check whether an email and/ or username already exists in the database.
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')  # Not sure if .lower can be added here...
-        if User.objects.filter(email=email).exculde(username=username):
+        if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError("Email address must be unique")
         return email
 

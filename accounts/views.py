@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required  # This will stop peop
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm
+import re
 # from django.template.context_processors import csrf(csrf should work with importing this)
 # Create your views here.
 
@@ -11,6 +12,20 @@ from .forms import UserLoginForm, UserRegistrationForm
 def index(request):
     #  Return the index.html file (also see line 18 & 22 in urls.py)
     return render(request, 'index.html')  # Only add 'index.html' here and stick with 'index' below.
+
+
+def login_input_fields(request, login_form):
+    username = login_form['username'].value()
+    password = login_form['password'].value()
+
+    if username is None or username == "":
+        messages.error(request, 'your username is required')
+        return False
+    if password is None or password == "":
+        messages.error(request, 'password is required')
+        return False
+
+    return True
 
 
 @login_required  # This decorator will check to see if the user is logged in before executing any more of the code.
@@ -28,9 +43,13 @@ def login(request):
     if request.method == 'POST':
         login_form = UserLoginForm(request.POST)  # Create an instance of the user login form and pass it in the request.post as an other constructor so
                                                   # a new login form will be created with the data posted from the form on the UI.
+
+        if login_input_fields(request, login_form) is False:
+            args = {'login_form': login_form, 'next': request.GET.get('next', '')}
+            return render(request, 'login.html', args)
+
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
-                                     email=request.POST['email'],
                                      password=request.POST['password'])
 
             if user:
@@ -44,12 +63,41 @@ def login(request):
                     return redirect(reverse('index'))  # This will redirect the user to a specific other page just so that they're not redirected back to the login page again when logged in.
 
             else:
-                login_form.add_error(None, "Username is incorrect")
+                login_form.add_error("username", "Combination of username and password is incorrect")
     else:
         login_form = UserLoginForm()  # Otherwise, create an empty login.
 
     args = {'login_form': login_form, 'next': request.GET.get('next', '')}
     return render(request, 'login.html', args)
+
+
+def registration_input_fields(request, registration_form):
+    email = registration_form['email'].value()
+    username = registration_form['username'].value()
+    password1 = registration_form['password1'].value()
+    password2 = registration_form['password2'].value()
+
+    if email is None or email == "":
+        messages.error(request, 'an email address is required')
+        return False
+    if not re.match(r"^[A-Za-z0-9\.\+_-]+@[A-Za-z0-9\._-]+\.[a-zA-Z]*$", email):
+        messages.error(request, 'a valid email address is required')
+        return False
+    if username is None or username == "":
+        messages.error(request, 'your username is required')
+        return False
+    if password1 is None or password1 == "":
+        messages.error(request, 'password is required')
+        return False
+    if password2 is None or password2 == "":
+        messages.error(request, 'confirmation password is required')
+        return False
+
+    if password1 != password2:
+        messages.error(request, 'passwords do not match')
+        return False
+
+    return True
 
 
 @login_required
@@ -65,6 +113,10 @@ def registration(request):
 
     if request.method == 'POST':
         registration_form = UserRegistrationForm(request.POST)
+
+        if registration_input_fields(request, registration_form) is False:
+            args = {'registration_form': registration_form}
+            return render(request, 'registration.html', args)
 
         if registration_form.is_valid():
             registration_form.save()  # Because the model (user=) is already specified inside of the meta class in the registration form (forms.py) it's not needed to specify model again here.
