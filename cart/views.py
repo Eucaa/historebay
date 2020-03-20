@@ -37,7 +37,21 @@ def add_to_cart(request, id):
 
 def adjust_cart(request, id):
     """ Adjusts (increase/decrease) the quantity of the specified product to the specified amount """
-    quantity = int(request.POST.get('quantity'))  # Gets the existing quantity as an integer. Adjust what's currently in the cart in the current session, when needed.
+    quantity = request.POST.get('quantity')  # Gets the existing quantity as an integer. Adjust what's currently in the cart in the current session, when needed.
+
+    quantityAdjust = request.POST.get('quantity')
+    if quantityAdjust == "":
+        messages.error(request, 'Adjust quantity')
+        return redirect(reverse('view_cart'))
+
+    try:
+        int(quantityAdjust)
+    except ValueError:
+        messages.error(request, 'Adjust quantity')
+        return redirect(reverse('view_cart'))
+
+    quantity = int(quantityAdjust)
+
     cart = request.session.get('cart', {})
 
     # Only adjust when the quantity is greater than '0':
