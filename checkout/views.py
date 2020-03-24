@@ -6,11 +6,21 @@ from .models import OrderLineItem
 from django.conf import settings  # Import settings.py to get the Stripe key/value settings from the settings.py file.
 from django.utils import timezone
 from products.models import Product  # From the products app(folder), import the class Product to activate line 29 below here.
+from categories.models import Category
+from productType.models import ProductType
 import stripe
 
 # Create your views here.
 # Requires the API's of Stripe, which are set in the settings.py file.
 stripe.api_key = settings.STRIPE_SECRET
+
+
+def all_categories():
+    return Category.objects.all()
+
+
+def all_productTypes():
+    return ProductType.objects.all()
 
 
 def check_input_fields(request, order_form):
@@ -99,5 +109,8 @@ def checkout(request):
     else:  # Return a blank form (cover for if-loop on line 17)
         payment_form = MakePaymentForm()
         order_form = OrderForm()
+
+    categories = all_categories()
+    productTypes = all_productTypes()
     # Return a view called 'checkout.html' and include the order_form and the payment_form in there.
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE, "categories": categories, "productTypes": productTypes})

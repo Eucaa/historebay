@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-{% block page_title %}{{ user }}'s Profile{% endblock %}
 {% load bootstrap_tags %}
 {% block page_heading %}{{ user }}'s Profile{% endblock %}
 
 {% block content %}
     <h2>Welcome</h2>
     <p>You are logged in as {{ user.username }} </p>
+    <a href="{% url 'index' %}">Main Page</a>
 {% endblock %}

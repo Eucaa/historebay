@@ -1,12 +1,24 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from categories.models import Category
+from productType.models import ProductType
 
 # Create your views here.
 
 
+def all_categories():
+    return Category.objects.all()
+
+
+def all_productTypes():
+    return ProductType.objects.all()
+
+
 def view_cart(request):
     """ A view(page) that renders the cart content. """
-    return render(request, "cart.html")  # No need to pass in a dictionary of cart_contents because that context is available everywhere.
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, "cart.html", {"categories": categories, "productTypes": productTypes})  # No need to pass in a dictionary of cart_contents because that context is available everywhere.
 
 
 def add_to_cart(request, id):

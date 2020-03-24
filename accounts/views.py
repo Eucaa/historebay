@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required  # This will stop peop
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm
+from categories.models import Category
+from productType.models import ProductType
 import re
 # from django.template.context_processors import csrf(csrf should work with importing this)
 # Create your views here.
@@ -12,6 +14,14 @@ import re
 def index(request):
     #  Return the index.html file (also see line 18 & 22 in urls.py)
     return render(request, 'index.html')  # Only add 'index.html' here and stick with 'index' below.
+
+
+def all_categories():
+    return Category.objects.all()
+
+
+def all_productTypes():
+    return ProductType.objects.all()
 
 
 def login_input_fields(request, login_form):
@@ -53,7 +63,7 @@ def login(request):
                                      password=request.POST['password'])
 
             if user:
-                auth.login(user, request)
+                auth.login(request, user)
                 messages.success(request, "Succesfully logged in")
 
                 if request.GET and request.GET['next'] != '':
@@ -142,4 +152,6 @@ def registration(request):
 def user_profile(request):
     """User profile page"""
     user = User.objects.filter(email=request.user.email)  # Retrieve the user from the database. Where a user email is equal to whatever email is stored in the request object.
-    return render(request, 'profile.html', {'profile': user})
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'profile.html', {'profile': user, "categories": categories, "productTypes": productTypes})
