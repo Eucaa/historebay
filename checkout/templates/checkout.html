@@ -19,7 +19,7 @@
                 <h3>{{ item.product.name }}</h3>  <!--Get from the class Product(products/models.py) the name for item(the for-loop at line 18).-->
                 <p class="product-description">{{ item.product.description }}</p>  <!--class "product-description" here is a css-thingy.-->
                 <p>{{ item.quantity }}</p>
-                <p>{{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
+                <p>€ {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
             </div>
         </div>
     </div>
