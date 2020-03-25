@@ -13,7 +13,7 @@
         <div class="caption">
             <h3>{{ item.product.name }}</h3>  <!--This will show the name of the product, as inlcuded in the cart_item list (contexts.py).-->
             <p class="product-description">{{ item.product.description }}</p>
-            <p>{{ item.product.price }}</p>
+            <p>€ {{ item.product.price }}</p>
             <p>
             <!--Create a form, which will include an input where you can adjust the number of items that we wish to purchase.-->
                 <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
