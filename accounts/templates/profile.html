@@ -3,7 +3,9 @@
 {% block page_heading %}{{ user }}'s Profile{% endblock %}
 
 {% block content %}
+<div class="form-group col-6">
     <h2>Welcome</h2>
     <p>You are logged in as {{ user.username }} </p>
     <a href="{% url 'index' %}">Main Page</a>
+</div>
 {% endblock %}
