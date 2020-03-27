@@ -18,12 +18,13 @@
             <p>{{ categoryFromProduct.names }}</p>
             <p>{{ productTypeFromProduct.name }}</p>
 
-            <form method="GET" action="{% url 'productDetails' productDetails.id %}">
+            <form method="POST" action="{% url 'adjust_cart_in_details' productDetails.id %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity"/>
+                    <div class="input-group-prepend">{{ quantity }}</div>
                     <span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Add</button>
+                        <button class="btn btn-primary" type="submit"><span><i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></span>Adjust</button>
                     </span>
                 </div>
             </form>
