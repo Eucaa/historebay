@@ -3,14 +3,6 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-
-<nav class="breadcrumb">
-  <ol><a href="/">Home</a></ol>
-      {% for slug,name in breadcrumbs %}
-          <ol><a href="/category/{{ slug }}">{{ name }}</a></ol>
-      {% endfor %}
-</nav>
-
 <div class="row row-flex">
 {% for product in products %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default"> <!--Different column sizes for different screen sizes.-->
@@ -28,7 +20,7 @@
             <form method="POST" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity"/>
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
                     <span class="input-group-btn">
                         <button class="btn btn-success" type="submit">Add</button>
                     </span>

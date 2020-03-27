@@ -13,9 +13,9 @@ def show_category(request, categoryList=None):
             parent = get_object_or_404(Category, slug=slug, parent=parent)
         else:
             instance = get_object_or_404(Product, slug=slug)
-            breadcrumbs_link = instance.get_cat_list()
-            category_name = [' '.join(i.split('/')[-1].split('-')) for i in breadcrumbs_link]
-            breadcrumbs = zip(breadcrumbs_link, category_name)
+            #breadcrumbs_link = instance.get_cat_list()
+            #category_name = [' '.join(i.split('/')[-1].split('-')) for i in breadcrumbs_link]
+            #breadcrumbs = zip(breadcrumbs_link, category_name)
             return render(request, "products.html", {'instance': instance, 'breadcrumbs': breadcrumbs})
 
     return render(request, "categories.html", {'products_set': parent.products_set.all(), 'sub_categories': parent.children.all()})
