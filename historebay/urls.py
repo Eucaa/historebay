@@ -23,10 +23,12 @@ from search import urls as urls_search
 from checkout import urls as urls_checkout
 from django.views import static  # Import the static folder (and substance).
 from .settings import MEDIA_ROOT  # From the settings.py file, import the MEDIA_ROOT.
+from products.views import listing
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', all_products, name='index'),  # If there's no name after the slash/ in the URL, then just display all_products of the very first page.
+    url(r'^$', listing, name='index'),  # If there's no name after the slash/ in the URL, then just display all_products of the very first page.
     url(r'^accounts/', include(urls_accounts)),
     url(r'^products/', include(urls_products)),  # Include all our URLs from the products app(folder).
     url(r'^cart/', include(urls_cart)),

@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from .models import Product
 from categories.models import Category
@@ -64,3 +65,22 @@ def adjust_cart_in_details(request, id):
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
+
+def listing(request):
+    print("This page")
+    product_list = Product.objects.all()
+    page = request.GET.get('page')
+    categories = Category.objects.all()
+    productTypes = ProductType.objects.all()
+    paginator = Paginator(product_list, 2)  # Show 2 product per page
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+    print(products)
+    return render(request, "products.html", {"products": products, "categories": categories, "productTypes": productTypes})
