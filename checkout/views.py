@@ -75,6 +75,7 @@ def checkout(request):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
+                product.availability = product.availability - quantity
                 total += quantity * product.price  # Get the total, add a quantity and multiply by the product price. This will give the total price.
                 order_line_item = OrderLineItem(  # Get the above created objects and combine them with the OrderLineItem class in the models.py file...
                     order=order,
@@ -82,6 +83,7 @@ def checkout(request):
                     quantity=quantity,
                 )
                 order_line_item.save()  # ... and save them. This will show the details of what's being purchased.
+                product.save()
 
             # Using the build-in API from Stripe, try to create a customer charge...
             try:
