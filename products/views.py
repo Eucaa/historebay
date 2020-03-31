@@ -68,7 +68,6 @@ def adjust_cart_in_details(request, id):
 
 
 def listing(request):
-    print("This page")
     product_list = Product.objects.all()
     page = request.GET.get('page')
     categories = Category.objects.all()

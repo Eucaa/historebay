@@ -4,33 +4,32 @@
 {% block content %}
 
 <h2>Something here</h2>
-<div class="row row-flex">
-{% for product in products %}
-    
-    <nav>
-    {% if product.has_other_pages %}
+<nav>
+    {% if products.has_other_pages %}
     <ul class="pagination">
-        {% if product.has_previous %}
-            <li><a href="?page={{ product.previous_page_number }}">&laquo;</a></li>
+        {% if products.has_previous %}
+            <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
         {% else %}
             <li class="disabled"><span>&laquo;</span></li>
         {% endif %}
-        {% for i in product.paginator.page_range %}
-            {% if product.number == i %}
+        {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
                 <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span></li>
             {% else %}
                 <li><a href="?page={{ i }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
-        {% if product.has_next %}
-            <li><a href="?page={{ product.next_page_number }}">&raquo;</a></li>
+        {% if products.has_next %}
+            <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
         {% else %}
             <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
     </ul>
     {% endif %}
-    </nav>
+</nav>
 
+<div class="row row-flex">
+{% for product in products %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default"> <!--Different column sizes for different screen sizes.-->
         <div class="panel-body">
         
