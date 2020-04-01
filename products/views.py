@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Product
 from categories.models import Category
 from productType.models import ProductType
+import random
 # from cart.views import view_cart
 # Create your views here.
 
@@ -68,10 +69,13 @@ def adjust_cart_in_details(request, id):
 
 
 def listing(request):
-    product_list = Product.objects.all()
+    product_list = list(Product.objects.all())
     page = request.GET.get('page')
     categories = Category.objects.all()
     productTypes = ProductType.objects.all()
+    if page is None:
+        random.shuffle(product_list)
+
     paginator = Paginator(product_list, 3)  # Show 3 product per page
     try:
         products = paginator.page(page)
