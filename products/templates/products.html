@@ -39,7 +39,7 @@
                                                                                                       Add a media context_processor in the setting.py file (cause there is media!).-->
             </div>
             <h3>{{ product.name }}</h3>
-            <p class="product-description">{{ product.description }}</p>
+            <p class="product-description">{{ product.description|linebreaks }}</p>
             <p>Availability: {{ product.availability }}</p>
             <p>€ {{ product.price }}</p>
             <a href="{% url 'productDetails' product.id %}" class="btn btn-success" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>

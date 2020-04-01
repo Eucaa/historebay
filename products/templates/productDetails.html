@@ -13,7 +13,7 @@
                                                                                                       Add a media context_processor in the setting.py file (cause there is media!).-->
             </div>
             <h3>{{ productDetails.name }}</h3>
-            <p class="product-description">{{ productDetails.description }}</p>
+            <p class="product-description">{{ productDetails.description|linebreaks }}</p>
             <p>Availability: {{ productDetails.availability }}</p>
             <p>€ {{ productDetails.price }}</p>
             <p>{{ categoryFromProduct.names }}</p>

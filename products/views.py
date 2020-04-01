@@ -72,7 +72,7 @@ def listing(request):
     page = request.GET.get('page')
     categories = Category.objects.all()
     productTypes = ProductType.objects.all()
-    paginator = Paginator(product_list, 2)  # Show 2 product per page
+    paginator = Paginator(product_list, 3)  # Show 3 product per page
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
