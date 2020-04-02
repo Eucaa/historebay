@@ -1,26 +1,92 @@
 
+@import url('https://fonts.googleapis.com/css?family=Domine&display=swap');
+
+* {
+    font-family: 'Domine', serif;
+}
+
+
+/* --- nav-bar styling --- */
+
+.nav_font_size {
+    font-size: large;
+}
+
+.bg-color {
+    background-color:  #566573;
+}
+
+body {
+    color: #566573;
+    margin-top: 5%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #F0EDE0;
+}
+
+.navbar-light .navbar-brand {
+    color: #F0EDE0;
+}
+
+.ivory {
+    color: #F0EDE0;
+}
+
+a:hover {
+    color: #00070F;
+}
+
+.btn-secondary {
+    background-color: #566573;
+    border-color: #566573;
+    color: #F0EDE0
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:focus, .btn-secondary:focus, .btn-secondary:hover {
+    background-color: #566573;
+    border-color: #566573; 
+    box-shadow: none;
+}
+
+.show>.btn-secondary.dropdown-toggle, .btn-secondary:focus, .show>.btn-secondary.dropdown-toggle:focus, .show>.btn-secondary.dropdown-toggle:focus, .show>.btn-secondary.dropdown-toggle:focus-within
+.btn-secondary:not(:disabled):not(.disabled):active:focus {
+    border-color: #566573;
+    box-shadow: none !important;
+}
+
+.logo_resize {
+    width: 30%;
+}
+
+.badge-warning {
+    background-color: #a6b70b;
+    padding-left: 2px;
+    padding-right: 2px;
+    -webkit-border-raduis: 7px;
+    -moz-border-raduis: 7px;
+    -o-border-raduis: 7px;
+    border-radius: 7px;
+}
+
+.cart_size {
+    margin-right: 1rem; 
+    font-size: x-large;
+}
+
+/* --- footer styling --- */
+
 footer {
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px solid #ededed;
-    color: #A9A9A9;
-}
-
-.badge {
-    padding-left: 9px;
-    padding-right: 9px;
-    -webkit-border-raduis: 9px;
-    -moz-border-raduis: 9px;
-    -o-border-raduis: 9px;
-    border-radius: 9px;
+    color: #F0EDE0;
+    background-color: #566573;
 }
 
 
-.label-warning[href],
-.badge-warning[href] {
-    background-color: #B7950B;
-}
+/* --- mics styling --- */
 
 .product {
     background-size: contain;
@@ -53,4 +119,8 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .product-description {
     min-height: 40px;  /* statement of min-height for product description */
+}
+
+.icon-size {
+    width: 40px;
 }

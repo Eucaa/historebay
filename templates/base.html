@@ -15,64 +15,67 @@
         <title>Historebay</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-color nav_font_size">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'index' %}">Historebay</a>
+                <img class="icon-size" src="{% static 'css/img/heb_icon.png' %}">
+                <a class="navbar-brand nav-color" href="{% url 'index' %}">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                        {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
-                        {% endif %}
-                        <li>
-                            <a href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
-                                <i class="fa fa-shopping-cart"></i>cart
-                                {% if product_count > 0 %}
-                                <label class="bagde badge-warning">{{ product_count }}</label>
-                                {% endif %}
-                            </a>
-                        </li>
-                    </ul>
+                    <!-- <div class="container-fluid"> -->
+                        <div class="nav-item dropdown col-xs-2 btn-distance">
+                            <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categories
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for category in categories %}
+                                <a class="dropdown-item" href="{% url 'products_by_category' category.id %}">{{category.names}}</a>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown col-xs-2">
+                            <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Product Types
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for productType in productTypes %}
+                                <a class="dropdown-item" href="{% url 'products_by_producttype' productType.id %}">{{productType.name}}</a>
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <img class="ml-auto logo_resize" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
+
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            {% if user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
+                            {% endif %}
+                            <li>
+                                <a class="ivory cart_size" href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
+                                    <i class="fa fa-shopping-cart"></i>cart
+                                    {% if product_count > 0 %}
+                                    <label class="bagde badge-warning">{{ product_count }}</label>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <form action="{% url 'search' %}" method="GET">
+                                <input type="text" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
+                                <button type="submit">Search</button> 
+                            </form>
+                        </ul>
+                    <!-- </div> -->
                 </div>
             </div>
         </nav>
-        <div class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="nav-item dropdown col-xs-2">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categories
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for category in categories %}
-                        <a class="dropdown-item" href="{% url 'products_by_category' category.id %}">{{category.names}}</a>
-                    {% endfor %}
-                    </div>
-                </div>
-                <div class="nav-item dropdown col-xs-2">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Product Types
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for productType in productTypes %}
-                        <a class="dropdown-item" href="{% url 'products_by_producttype' productType.id %}">{{productType.name}}</a>
-                    {% endfor %}
-                    </div>
-                </div>
-                <div class="display ml-auto col-xs-4">
-                    <form action="{% url 'search' %}" method="GET">
-                        <input type="text" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
-                        <button type="submit">Search</button> 
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top"> -->
+            
+        <!-- </div> -->
                 
             
 
