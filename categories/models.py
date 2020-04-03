@@ -11,6 +11,7 @@ class Category(models.Model):
     class Meta:
         unique_together = ('slug', 'parent',)
         verbose_name_plural = "categories"
+        ordering = ['names']
 
     def __str__(self):
         full_path = [self.names]

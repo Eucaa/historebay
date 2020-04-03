@@ -29,7 +29,7 @@ body {
     color: #F0EDE0;
 }
 
-.ivory {
+.ivory_text {
     color: #F0EDE0;
 }
 
@@ -74,13 +74,40 @@ a:hover {
     font-size: x-large;
 }
 
+.radius_search-btn {
+    border-radius: 5px;
+}
+
+
+/* --- body styling --- */
+
+.btn-success, .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled):active, .btn-success:hover, .btn-success:focus {
+    color: #00070F;
+    border-color: #b7860b;
+    background-color: #9b7108;
+}
+
+.btn-info, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:hover, .btn-info:focus {
+    color: #00070F;
+    border-color: #92a10a;
+    background-color: #889608;
+}
+
+.btn-primary, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:hover, .btn-primary:focus {
+    color: #00070F;
+    border-color: #B7950B;
+    background-color: #a7870b;
+}
+
+
+
 /* --- footer styling --- */
 
 footer {
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid #ededed;
+    border-top: 1px solid #F0EDE0;
     color: #F0EDE0;
     background-color: #566573;
 }
@@ -123,4 +150,20 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .icon-size {
     width: 40px;
+}
+
+.ivory {
+    background-color: #F0EDE0;
+}
+
+.gold {
+    background-color: #B7950B;
+}
+
+.bronze {
+    background-color: #b7860b;
+}
+
+.pistachio {
+    background-color: #a6b70b;
 }

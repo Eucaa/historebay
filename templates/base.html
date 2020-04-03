@@ -57,7 +57,7 @@
                                 <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
                             {% endif %}
                             <li>
-                                <a class="ivory cart_size" href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
+                                <a class="ivory_text cart_size" href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
                                     <i class="fa fa-shopping-cart"></i>cart
                                     {% if product_count > 0 %}
                                     <label class="bagde badge-warning">{{ product_count }}</label>
@@ -66,7 +66,7 @@
                             </li>
                             <form action="{% url 'search' %}" method="GET">
                                 <input type="text" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
-                                <button type="submit">Search</button> 
+                                <button class="ivory radius_search-btn" type="submit">Search</button> 
                             </form>
                         </ul>
                     <!-- </div> -->

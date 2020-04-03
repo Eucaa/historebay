@@ -42,14 +42,14 @@
             <p class="product-description">{{ product.description|linebreaks }}</p>
             <p>Availability: {{ product.availability }}</p>
             <p>€ {{ product.price }}</p>
-            <a href="{% url 'productDetails' product.id %}" class="btn btn-success" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
+            <a href="{% url 'productDetails' product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
 
             <form method="POST" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Add</button>
+                        <button class="btn btn-info pistachio" type="submit">Add</button>
                     </span>
                 </div>
             </form>
