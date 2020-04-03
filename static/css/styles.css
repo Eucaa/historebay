@@ -43,6 +43,10 @@ a:hover {
     color: #F0EDE0
 }
 
+.btn-secondary:hover, .btn-secondary:focus, .show>.btn-secondary.dropdown-toggle, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled):active {
+    color: #00070F;
+}
+
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:focus, .btn-secondary:focus, .btn-secondary:hover {
     background-color: #566573;
     border-color: #566573; 
@@ -78,6 +82,9 @@ a:hover {
     border-radius: 5px;
 }
 
+a:hover {
+    text-decoration: none;
+}
 
 /* --- body styling --- */
 
