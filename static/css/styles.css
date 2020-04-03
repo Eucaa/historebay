@@ -106,7 +106,14 @@ a:hover {
     background-color: #a7870b;
 }
 
+.page_hover_shade {
+    color: #B7950B !important;
+}
 
+.page-link {
+    padding: 1rem;
+    color: #00070F;
+}
 
 /* --- footer styling --- */
 
@@ -173,4 +180,8 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .pistachio {
     background-color: #a6b70b;
+}
+
+.slateGrey {
+    color: #566573;
 }
