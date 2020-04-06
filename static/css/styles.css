@@ -92,6 +92,7 @@ a:hover {
     color: #00070F;
     border-color: #b7860b;
     background-color: #9b7108;
+    margin-bottom: 1rem;
 }
 
 .btn-info, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:hover, .btn-info:focus {
@@ -106,13 +107,32 @@ a:hover {
     background-color: #a7870b;
 }
 
+.form-control:focus {
+    border-color: #F0EDE0;
+    box-shadow: 0 0 0 0.2rem rgba(86, 101, 115, 0.25)
+}
+
 .page_hover_shade {
     color: #B7950B !important;
 }
 
 .page-link {
-    padding: 1rem;
+    padding: .5rem, .75rem;
+    line-height: 1;
     color: #00070F;
+    border-radius: 15px;
+}
+
+.pagination {
+    margin-left: 10px;
+}
+
+.row {
+    margin: 0;
+}
+
+h3 {
+    margin-top: 2.5rem
 }
 
 /* --- footer styling --- */
@@ -125,6 +145,12 @@ footer {
     color: #F0EDE0;
     background-color: #566573;
 }
+
+.card {
+    background-color: transparent;
+    border: 0;
+}
+
 
 
 /* --- mics styling --- */
@@ -150,11 +176,11 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .panel-default {
     border-color: transparent;
-    padding: 0 10px;
 }
 
 .panel-body {
     height: 100%;
+    padding: 15px;
     border: 1 px solid #ddd;
 }
 
