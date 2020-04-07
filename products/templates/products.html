@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}  <!--take the data from the base.html file--> 
 {% load bootstrap_tags %}
+{% load staticfiles %}
 {% block content %}
 
-<h2>Something here</h2>
+<div id="carouselExampleFade" class="carousel slide carousel-fade slide-sizing d-none d-md-block" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'css/img/antique.png' %}" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <h5 class="inner_textbox-sizing">All items you never thought to see again, are here on Historebay!</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'css/img/study.png' %}" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <h5 class="inner_textbox-sizing">Find your vintage favourites in our broad selection.</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'css/img/livingroom.png' %}" class="d-block w-100" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+        <h5 class="inner_textbox-sizing">Your safe haven for all lost and regained antiques.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav>
     {% if products.has_other_pages %}
     <ul class="pagination">

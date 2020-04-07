@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
 from products import urls as urls_products  # From the products-folder, in the urls.py file, import the urls as urls_products.
-from products.views import all_products  # From the views.py file in the products-folder, import the all_products function.
+#from products.views import all_products  # From the views.py file in the products-folder, import the all_products function.
 from cart import urls as urls_cart  # From the cart folder, import the urls as urls_cart.
 from search import urls as urls_search
 from checkout import urls as urls_checkout

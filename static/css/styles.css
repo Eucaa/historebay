@@ -60,17 +60,20 @@ a:hover {
 }
 
 .logo_resize {
-    width: 30%;
+    width: 23%;
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
 }
 
 .badge-warning {
     background-color: #a6b70b;
-    padding-left: 2px;
-    padding-right: 2px;
-    -webkit-border-raduis: 7px;
-    -moz-border-raduis: 7px;
-    -o-border-raduis: 7px;
-    border-radius: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    -webkit-border-raduis: 2px;
+    -moz-border-raduis: 2px;
+    -o-border-raduis: 2px;
+    border-radius: 2px;
 }
 
 .cart_size {
@@ -84,6 +87,36 @@ a:hover {
 
 a:hover {
     text-decoration: none;
+}
+
+.fixed-top {
+    padding: 20px;
+}
+
+/* --- carousel styling --- */
+
+.inner_textbox-sizing {
+    margin: 10rem;
+    text-align: center;
+    background-color: rgba(254, 255, 242, 0.80);
+    padding: 20px;
+    color: #566573;
+    font-size: x-large;
+    font-weight: 500;
+    border-radius: 1rem;
+}
+.slide-sizing {
+    margin-top: -12px;
+    margin-bottom: 12px;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 20%;
+    bottom: 20px;
+    left: 20%;
+    z-index: 10;
+    text-align: center;
 }
 
 /* --- body styling --- */
@@ -121,10 +154,16 @@ a:hover {
     line-height: 1;
     color: #00070F;
     border-radius: 15px;
+    border: 2px solid #dee2e6;
 }
 
 .pagination {
     margin-left: 10px;
+    padding: .5rem;
+}
+
+.page-link:hover {
+    color: #566573;
 }
 
 .row {
@@ -150,8 +189,6 @@ footer {
     background-color: transparent;
     border: 0;
 }
-
-
 
 /* --- mics styling --- */
 
@@ -189,7 +226,7 @@ caption p {  /* specifies the `p` in the class='caption' */
 }
 
 .icon-size {
-    width: 40px;
+    width: 50px;
 }
 
 .ivory {
