@@ -5,6 +5,8 @@ from .models import Product
 from categories.models import Category
 from productType.models import ProductType
 import random
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
 # from cart.views import view_cart
 # Create your views here.
 
@@ -101,3 +103,9 @@ def products_by_producttype(request, pk):
     categories = all_categories()
     productTypes = all_productTypes()
     return render(request, "products.html", {"products": products, "categories": categories, "productTypes": productTypes})
+
+
+def search_products(request):
+    query = request.GET.get('query')
+    product_list = list(Product.objects.filter(name__icontains=query).values())
+    return JsonResponse(product_list, safe=False)
