@@ -190,7 +190,23 @@ footer {
     border: 0;
 }
 
+.fa-filler {
+   color: #F0EDE0;
+   padding-right: 1rem;
+}
+
+.fa-filler:hover {
+    color: #00070F;
+}
+
 /* --- mics styling --- */
+
+.alert-info {
+    color: #566573;
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+}
 
 .product {
     background-size: contain;
@@ -247,4 +263,12 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .slateGrey {
     color: #566573;
+}
+
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+    z-index: 1050;
 }
