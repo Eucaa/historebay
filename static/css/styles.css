@@ -192,11 +192,16 @@ footer {
 
 .fa-filler {
    color: #F0EDE0;
-   padding-right: 1rem;
+   margin: 10px;
 }
 
 .fa-filler:hover {
     color: #00070F;
+}
+
+.link_position {
+    display: inline-block;
+    padding: 0
 }
 
 /* --- mics styling --- */
@@ -271,4 +276,9 @@ caption p {  /* specifies the `p` in the class='caption' */
     left: 0;
     cursor: default;
     z-index: 1050;
+}
+
+.address_table_sizing {
+    display: table-caption;
+    width: 9rem;
 }

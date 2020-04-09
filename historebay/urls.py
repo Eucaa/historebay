@@ -24,6 +24,7 @@ from checkout import urls as urls_checkout
 from django.views import static  # Import the static folder (and substance).
 from .settings import MEDIA_ROOT  # From the settings.py file, import the MEDIA_ROOT.
 from products.views import listing
+from contact_info import urls as urls_contact_info
 
 
 urlpatterns = [
@@ -35,4 +36,5 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),  # Because of the use of images in media, add this specific (Django-standard) media URL.
+    url(r'^contact_info/', include(urls_contact_info)),
 ]
