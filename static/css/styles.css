@@ -188,11 +188,13 @@ footer {
 .card {
     background-color: transparent;
     border: 0;
+    margin: .5rem;
 }
 
 .fa-filler {
    color: #F0EDE0;
    margin: 10px;
+   transition: color .5s;
 }
 
 .fa-filler:hover {
@@ -201,7 +203,12 @@ footer {
 
 .link_position {
     display: inline-block;
-    padding: 0
+    padding: 0;
+    color: #F0EDE0;
+}
+
+.grid_display {
+    display: grid;
 }
 
 /* --- mics styling --- */
@@ -281,4 +288,8 @@ caption p {  /* specifies the `p` in the class='caption' */
 .address_table_sizing {
     display: table-caption;
     width: 9rem;
+}
+
+a {
+    transition: color .5s;
 }
