@@ -131,12 +131,12 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()  # Because the model (user=) is already specified inside of the meta class in the registration form (forms.py) it's not needed to specify model again here.
 
-            user = auth.authenticate(username=request.POST.get['username'],
-                                     email=request.POST.get['email'],
-                                     password=request.POST.get['password1'])
+            user = auth.authenticate(username=request.POST.get('username'),
+                                     email=request.POST.get('email'),
+                                     password=request.POST.get('password1'))
 
             if user:
-                auth.login(user, request)
+                auth.login(request, user)
                 messages.success(request, "Succesfully registered.")
                 return redirect(reverse('index'))
             else:
