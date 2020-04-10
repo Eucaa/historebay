@@ -11,6 +11,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <link rel="icon" href="{% static 'css/img/heb_icon.png' %}">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+        <script type="text/javascript">
+        (function(){
+            emailjs.init("user_dsCSw90ZDaXXXvAJiHBcR");
+        })();
+        </script>
         {% block head_js %}
         {% endblock head_js %}  <!--This will only inject the JS used in the checkout.html into here when the checkout button is clicked.-->
         <title>Historebay</title>

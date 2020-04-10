@@ -154,4 +154,3 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-

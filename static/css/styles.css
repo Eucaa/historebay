@@ -293,3 +293,7 @@ caption p {  /* specifies the `p` in the class='caption' */
 a {
     transition: color .5s;
 }
+
+.center-block {
+    transition: color .5s;
+}

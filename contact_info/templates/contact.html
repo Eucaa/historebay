@@ -3,6 +3,12 @@
 {% load bootstrap_tags %}
 {% block content %}
 <div class="container">
+<div class="alert alert-secondary alert-dismissible fade hide" role="alert">
+  <strong>Your email has been sent!</strong> A copy of your email will be send to the corresponding email address.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <h3>Contact</h3>
 <p>If you would like to receive any additional information regarding purchasing or futher information on our policies, you may reach out to us by using the following means of contact:
 <div class="address_table_sizing">
@@ -15,5 +21,11 @@ Hawaii
 808-931-0249
 </div>
 </p>
+<form id="contact-form">
+    <input type="text" name="name" class="form-control" id="fullname" placeholder="Name" required/>
+    <input type="email" name="emailaddress" class="form-control" id="emailaddress" placeholder="Email" required/>
+    <textarea rows="5" name="question_request" class="form-control" id="question_request" placeholder="Please write your question here." required></textarea>
+    <button type="submit" class="btn btn-secondary center-block" data-toggle="modal" data-target="#exampleModalCenter">Send Email</button>
+</form>
 </div>
 {% endblock %}

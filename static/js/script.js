@@ -22,5 +22,27 @@ $(document).ready(function() {
             }); 
         } 
     });
+    $("#contact-form").submit(function(event) {
+        name = $("#fullname").val();
+        email = $("#emailaddress").val();
+        message = $("#question_request").val();
+        emailjs.send("gmail", "hb_questions", {
+            "from_name": name,
+            "from_email": email,
+            "question_request": message
+        },"user_dsCSw90ZDaXXXvAJiHBcR")
+        .then(
+            function(response) {
+                $("#fullname").val("");
+                $("#emailaddress").val("");
+                $("#question_request").val("");
+                $(".alert").removeClass('hide').addClass('show')
+                console.log("SUCCESS", response);
+            },
+            function(error) {
+                console.log("FAILED", error);
+            }
+        );
+        return false;
+    });
 });
-
