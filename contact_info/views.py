@@ -1,18 +1,35 @@
 from django.shortcuts import render
+from categories.models import Category
+from productType.models import ProductType
 
 
-# Create your views here.
+def all_categories():
+    return Category.objects.all()
+
+
+def all_productTypes():
+    return ProductType.objects.all()
+
+
 def about(request):
-    return render(request, 'about.html')
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'about.html', {"categories": categories, "productTypes": productTypes})
 
 
 def tac(request):
-    return render(request, 'tac.html')
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'tac.html', {"categories": categories, "productTypes": productTypes})
 
 
 def pac(request):
-    return render(request, 'pac.html')
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'pac.html', {"categories": categories, "productTypes": productTypes})
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'contact.html', {"categories": categories, "productTypes": productTypes})

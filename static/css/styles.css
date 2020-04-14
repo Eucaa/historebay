@@ -45,6 +45,7 @@ a:hover {
 
 .btn-secondary:hover, .btn-secondary:focus, .show>.btn-secondary.dropdown-toggle, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled):active {
     color: #00070F;
+    transition: color .5s;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:focus, .btn-secondary:focus, .btn-secondary:hover {
@@ -57,6 +58,7 @@ a:hover {
 .btn-secondary:not(:disabled):not(.disabled):active:focus {
     border-color: #566573;
     box-shadow: none !important;
+    transition: color .5s;
 }
 
 .logo_resize {
@@ -147,6 +149,7 @@ a:hover {
 
 .page_hover_shade {
     color: #B7950B !important;
+    transition: background-color .35s;
 }
 
 .page-link {
@@ -164,6 +167,11 @@ a:hover {
 
 .page-link:hover {
     color: #566573;
+    background-color: #d1d4d8;
+}
+
+.page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(186, 192, 197, 0.25);
 }
 
 .row {
@@ -233,17 +241,17 @@ caption p {  /* specifies the `p` in the class='caption' */
     word-wrap: break-word;  /*to prevent text-box overflow*/
 }
 
-.row.row-flex {
-    display: flex;
+.row-flex {
+    /* display: flex; */
     flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.panel-default {
+.card {
     border-color: transparent;
 }
 
-.panel-body {
+.card-body {
     height: 100%;
     padding: 15px;
     border: 1 px solid #ddd;
@@ -297,3 +305,9 @@ a {
 .center-block {
     transition: color .5s;
 }
+
+
+
+
+
+

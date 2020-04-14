@@ -6,7 +6,7 @@ from categories.models import Category
 from productType.models import ProductType
 import random
 from django.http import JsonResponse
-from django.forms.models import model_to_dict
+#from django.forms.models import model_to_dict
 # from cart.views import view_cart
 # Create your views here.
 

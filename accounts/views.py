@@ -11,17 +11,19 @@ import re
 # Create your views here.
 
 
-def index(request):
-    #  Return the index.html file (also see line 18 & 22 in urls.py)
-    return render(request, 'index.html')  # Only add 'index.html' here and stick with 'index' below.
-
-
 def all_categories():
     return Category.objects.all()
 
 
 def all_productTypes():
     return ProductType.objects.all()
+
+
+def index(request):
+    #  Return the index.html file (also see line 18 & 22 in urls.py)
+    categories = all_categories()
+    productTypes = all_productTypes()
+    return render(request, 'index.html', {"categories": categories, "productTypes": productTypes})  # Only add 'index.html' here and stick with 'index' below.
 
 
 def login_input_fields(request, login_form):
@@ -48,6 +50,8 @@ def logout(request):
 
 def login(request):
     """Return a login page"""
+    categories = all_categories()
+    productTypes = all_productTypes()
     if request.user.is_authenticated:  # This if statement prevents people form accessing the login page by entering the URL into the URL bar.
         return redirect(reverse('index'))
     if request.method == 'POST':
@@ -56,7 +60,7 @@ def login(request):
 
         if login_input_fields(request, login_form) is False:
             args = {'login_form': login_form, 'next': request.GET.get('next', '')}
-            return render(request, 'login.html', args)
+            return render(request, 'login.html', args, {"categories": categories, "productTypes": productTypes})
 
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
@@ -78,7 +82,7 @@ def login(request):
         login_form = UserLoginForm()  # Otherwise, create an empty login.
 
     args = {'login_form': login_form, 'next': request.GET.get('next', '')}
-    return render(request, 'login.html', args)
+    return render(request, 'login.html', args, {"categories": categories, "productTypes": productTypes})
 
 
 def registration_input_fields(request, registration_form):
@@ -120,13 +124,14 @@ def registration(request):
     """Render registration page"""
     # if request.user.is_authenticated:
     #     return redirect(reverse('index'))
-
+    categories = all_categories()
+    productTypes = all_productTypes()
     if request.method == 'POST':
         registration_form = UserRegistrationForm(request.POST)
 
         if registration_input_fields(request, registration_form) is False:
             args = {'registration_form': registration_form}
-            return render(request, 'registration.html', args)
+            return render(request, 'registration.html', args, {"categories": categories, "productTypes": productTypes})
 
         if registration_form.is_valid():
             registration_form.save()  # Because the model (user=) is already specified inside of the meta class in the registration form (forms.py) it's not needed to specify model again here.
@@ -146,7 +151,7 @@ def registration(request):
         registration_form = UserRegistrationForm()  # Create an instance (variable)
 
     args = {'registration_form': registration_form}
-    return render(request, 'registration.html', args)  # Pass render(request...) through a dictionary with registration_form as key and value (the instance).
+    return render(request, 'registration.html', args, {"categories": categories, "productTypes": productTypes})  # Pass render(request...) through a dictionary with registration_form as key and value (the instance).
 
 
 def user_profile(request):

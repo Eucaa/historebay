@@ -51,33 +51,41 @@
     {% endif %}
 </nav>
 
-<div class="row row-flex">
-{% for product in products %}
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default"> <!--Different column sizes for different screen sizes.-->
-        <div class="panel-body">
-        
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"> <!--By making a background image, it can fit the size of the  
-                                                                                                      <div> that it is in so that different sized images for different products 
-                                                                                                      won't end up looking mismatched in terms of size and shape.
-                                                                                                      Add a media context_processor in the setting.py file (cause there is media!).-->
-            </div>
-            <h3>{{ product.name }}</h3>
-            <p class="product-description">{{ product.description|linebreaks }}</p>
-            <p>Availability: {{ product.availability }}</p>
-            <p>€ {{ product.price }}</p>
-            <a href="{% url 'productDetails' product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
+<div class="container-fluid">
+<div class="">
+    <div class="">
+        <div class="row row-flex">
+        {% for product in products %}
+            <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
+            <div class="card h-100">
+                <div class="card-body flex-fill">
+                
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"> <!--By making a background image, it can fit the size of the  
+                                                                                                            <div> that it is in so that different sized images for different products 
+                                                                                                            won't end up looking mismatched in terms of size and shape.
+                                                                                                            Add a media context_processor in the setting.py file (cause there is media!).-->
+                    </div>
+                    <h3>{{ product.name }}</h3>
+                    <p class="product-description">{{ product.description|linebreaks }}</p>
+                    <p>Availability: {{ product.availability }}</p>
+                    <p>€ {{ product.price }}</p>
+                    <a href="{% url 'productDetails' product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
 
-            <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info pistachio" type="submit">Add</button>
-                    </span>
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-info pistachio" type="submit">Add</button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
-            </form>
-         </div>
-    </div>    
-{% endfor %}
+            </div>
+            </div>    
+        {% endfor %}
+        </div>
+    </div>
+</div>
 </div>
 {% endblock %}
