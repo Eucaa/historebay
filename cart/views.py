@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from categories.models import Category
 from productType.models import ProductType
+# from contexts import cart_contents
 
 # Create your views here.
 
@@ -74,3 +75,9 @@ def adjust_cart(request, id):
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
+
+def delete_from_cart(request, id):
+    request.POST = request.POST.copy()
+    request.POST['quantity'] = 0
+    return adjust_cart(request, id)

@@ -23,3 +23,5 @@ def cart_contents(request):
     Add 'cart.contexts.cart_contents',  to the 'context_processors': [..
     under TEMPLATES in the settings.py file.
     """
+
+
