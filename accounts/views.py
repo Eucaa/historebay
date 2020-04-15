@@ -81,8 +81,13 @@ def login(request):
     else:
         login_form = UserLoginForm()  # Otherwise, create an empty login.
 
-    args = {'login_form': login_form, 'next': request.GET.get('next', '')}
-    return render(request, 'login.html', args, {"categories": categories, "productTypes": productTypes})
+    args = {
+        'login_form': login_form,
+        'next': request.GET.get('next', ''),
+        'categories': categories,
+        'productTypes': productTypes
+        }
+    return render(request, 'login.html', args)
 
 
 def registration_input_fields(request, registration_form):
@@ -112,12 +117,6 @@ def registration_input_fields(request, registration_form):
         return False
 
     return True
-
-
-@login_required
-def profile(request):
-    """A view that displays the profile page of a logged in user"""
-    return render(request, 'profile.html')
 
 
 def registration(request):
@@ -150,8 +149,12 @@ def registration(request):
     else:
         registration_form = UserRegistrationForm()  # Create an instance (variable)
 
-    args = {'registration_form': registration_form}
-    return render(request, 'registration.html', args, {"categories": categories, "productTypes": productTypes})  # Pass render(request...) through a dictionary with registration_form as key and value (the instance).
+    args = {
+        'registration_form': registration_form,
+        'categories': categories,
+        'productTypes': productTypes
+        }
+    return render(request, 'registration.html', args)  # Pass render(request...) through a dictionary with registration_form as key and value (the instance).
 
 
 def user_profile(request):

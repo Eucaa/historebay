@@ -1,11 +1,21 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 {% load bootstrap_tags %}
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
 
 {% block content %}
-<div class="form-group col-6">
-    <h2>Welcome</h2>
-    <p>You are logged in as {{ user.username }} </p>
-    <a href="{% url 'index' %}">Main Page</a>
-</div>
+<div class="container-fluid profile-align">
+{% block page_heading %}<h2 class="profileName-align">{{ user }}'s Profile</h2>{% endblock %}
+<hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Welcome</h2>
+                    <h5 class="profileLog-align">You are logged in as {{ user.username }} </h5>
+                    <a href="{% url 'index' %}"><h6>Got to Main Page</h6></a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+</div>
