@@ -18,20 +18,21 @@
             <div class="caption">  <!--The caption-class is used to view data that must be shown right above a table. This can also be set through CSS.-->
                 <h3>{{ item.product.name }}</h3>  <!--Get from the class Product(products/models.py) the name for item(the for-loop at line 18).-->
                 <p class="product-description">{{ item.product.description }}</p>  <!--class "product-description" here is a css-thingy.-->
-                <p>{{ item.quantity }}</p>
-                <p>€ {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
+                <p><strong>Total items:</strong> {{ item.quantity }}</p>
+                <p><strong>Price per item:</strong> € {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+<hr>
 <div class="row">  <!--To view the total costs of the purchasing items.-->
-    <p>Total</p>
-    <p><span><i class="fa fa-eur fa-sm" aria-hidden="true"></i></span>{{ total }}</p>
+    <p class="total-adjust-position-checkout"><strong>Total price:</strong></p>
+    <p class="price-adjust-position"><span><i class="fa fa-eur fa-sm" aria-hidden="true"></i></span>{{ total }}</p>
 </div>
-
-<form role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">  <!--The url referes to the checkout function.-->
-    <legend>Payment Details</legend>  <!--The <legend> tag defines a caption for the <form> element.-->
+<hr class="new-line-form">
+<form class="paymentfrom-align" role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">  <!--The url referes to the checkout function.-->
+    <legend class="payment-legend-align">Payment Details</legend>  <!--The <legend> tag defines a caption for the <form> element.-->
     <!--A <div> created for credit card issues that might come back.-->
     <div id="credit-card-errors" style="display:none;">  <!--It's better to place the style of "display:none; into CSS.-->
         <div id="alert-message block-message error"></div>
@@ -48,7 +49,7 @@
 
     {% csrf_token %}
     <div class="form-group col-md-12">
-        <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        <input class=" btn btn-primary gold submit-btn-align" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
 </form>
 {% endblock %}

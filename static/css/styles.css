@@ -179,7 +179,11 @@ a:hover {
 }
 
 h3 {
-    margin-top: 2.5rem
+    margin-top: 2.5rem;
+}
+
+.input-group-prepend {
+    margin: .5rem;
 }
 
 /* --- footer styling --- */
@@ -219,7 +223,7 @@ footer {
     display: grid;
 }
 
-/* --- mics styling --- */
+/* --- misc styling --- */
 
 .alert-info {
     color: #566573;
@@ -306,8 +310,57 @@ a {
     transition: color .5s;
 }
 
+.total-adjust-position {
+    padding: .5rem;
+    margin-left: 1rem;
+}
 
+.price-adjust-position {
+    padding: .5rem;
+}
 
+.fa-eur {
+    padding-right: .25rem;
+}
 
+.total-adjust-position-checkout {
+    padding: .5rem;
+    margin-left: 2rem;
+}
 
+.new-line-form {
+    border-color: #566573;
+}
 
+.paymentfrom-align {
+    margin: 1rem;
+}
+
+.payment-legend-align {
+    margin-left: 1rem;
+}
+
+.position-checkout-btn {
+    margin: 1.5rem;
+}
+
+.submit-btn-align {
+    margin-top: 2rem;
+}
+
+.profile-align {
+    text-align: center;
+}
+
+.profileName-align {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.profileLog-align {
+    padding: 2rem;
+}
+
+.remove_margin {
+    margin: 0;
+}
