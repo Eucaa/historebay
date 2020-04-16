@@ -75,7 +75,7 @@ a:hover {
     -webkit-border-raduis: 2px;
     -moz-border-raduis: 2px;
     -o-border-raduis: 2px;
-    border-radius: 2px;
+    border-radius: 20px;
 }
 
 .cart_size {
@@ -127,7 +127,7 @@ a:hover {
     color: #00070F;
     border-color: #b7860b;
     background-color: #9b7108;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .btn-info, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:hover, .btn-info:focus {
@@ -304,6 +304,7 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 a {
     transition: color .5s;
+    color: #b7860b;
 }
 
 .center-block {
@@ -342,6 +343,7 @@ a {
 
 .position-checkout-btn {
     margin: 1.5rem;
+    background-color: #e6b026;
 }
 
 .submit-btn-align {
@@ -363,4 +365,69 @@ a {
 
 .remove_margin {
     margin: 0;
+    width: 12%; 
 }
+
+.delete_btn_align {
+    margin-left: 2rem;
+}
+
+.delete_hover_ctrl:hover, .delete_hover_ctrl:focus, .delete_hover_ctrl:not(:disabled):not(.disabled):active, .delete_hover_ctrl:not(:disabled):not(.disabled):active {
+    background-color: #d8d6cf;
+}
+
+.total_prize_style_checkout {
+    background-color: #F0EDE0;
+    padding-top: 1rem;
+    width: 15%;
+    margin-left: 2%
+}
+
+.total_prize_style_cart {
+    background-color: #F0EDE0;
+    padding-top: 1rem;
+    margin-left: 2%
+}
+
+.login-btn-align {
+    margin-top: 1rem;
+}
+
+.qty-input-align {
+    margin-right: 1rem;
+}
+
+.center-content {
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.add-btn-align {
+    margin-left: 1rem;
+}
+
+/* --- screen type adjustments --- */
+
+@media screen and (min-width: 1200px) {
+    .nav_font_size {
+        font-size: small;
+    }
+}
+
+@media screen and (min-width: 1549px) {
+    .nav_font_size {
+        font-size: medium;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .nav_font_size {
+        font-size: large;
+    }
+}
+
+/* @media screen and (min-width: 991px) {
+    .nav_font_size {
+        font-size: small;
+    }
+} */

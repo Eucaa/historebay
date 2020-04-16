@@ -65,6 +65,7 @@
                                                                                                             won't end up looking mismatched in terms of size and shape.
                                                                                                             Add a media context_processor in the setting.py file (cause there is media!).-->
                     </div>
+                    <div>
                     <h3>{{ product.name }}</h3>
                     <p class="product-description">{{ product.description|linebreaks }}</p>
                     <p>Availability: {{ product.availability }}</p>
@@ -75,11 +76,12 @@
                         {% csrf_token %}
                         <div class="input-group">
                             <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
-                            <span class="input-group-btn">
+                            <span class="input-group-btn add-btn-align">
                                 <button class="btn btn-info pistachio" type="submit">Add</button>
                             </span>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
             </div>    

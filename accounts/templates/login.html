@@ -6,13 +6,17 @@
 {% block page_heading %}User Login{% endblock %}
 
 {% block content %}
-<div class="form-group col-6">
-<form method="POST">
-    {% csrf_token %}
-    {{ login_form | as_bootstrap}}
-    <button type="submit">login</button>
-</form>
-<p>If you are new to this website or would like to buy our items, you can <a href="{% url 'registration' %}">create an account</a>.</p>
-<p><a href="{% url 'password_reset' %}">Forgot Password</a></p>  <!--The url is taken from the url_reset.py file-->
+<div class="container-fluid">
+<div class="row center-content">
+<div class="form-group col-lg-6">
+    <form method="POST">
+        {% csrf_token %}
+        {{ login_form | as_bootstrap}}
+        <button class="btn btn-success bronze login-btn-align" type="submit">Login</button>
+    </form>
+    <p>If you are new to this website or would like to buy our items, you can <a href="{% url 'registration' %}">create an account</a>.</p>
+    <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>  <!--The url is taken from the url_reset.py file-->
+</div>
+</div>
 </div>
 {% endblock %}
