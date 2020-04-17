@@ -4,7 +4,7 @@
 {% load staticfiles %}
 {% block content %}
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade slide-sizing d-none d-md-block" data-ride="carousel">
+<div id="carouselExampleFade" class=" slide carousel-fade slide-sizing d-none d-md-block" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="{% static 'css/img/antique.png' %}" class="d-block w-100" alt="...">
@@ -26,7 +26,7 @@
     </div>
   </div>
 </div>
-
+<h5 class="welcome_note">Welcome to Historebay. The safe haven for all your favourite antiques!</h5>
 <nav>
     {% if products.has_other_pages %}
     <ul class="pagination">

@@ -95,6 +95,10 @@ a:hover {
     padding: 20px;
 }
 
+.fa-shopping-cart {
+    margin-right: 0.15rem;
+}
+
 /* --- carousel styling --- */
 
 .inner_textbox-sizing {
@@ -108,7 +112,7 @@ a:hover {
     border-radius: 1rem;
 }
 .slide-sizing {
-    margin-top: -12px;
+    margin-top: -13px;
     margin-bottom: 12px;
 }
 
@@ -163,6 +167,7 @@ a:hover {
 .pagination {
     margin-left: 10px;
     padding: .5rem;
+    margin-top: 1.5rem;
 }
 
 .page-link:hover {
@@ -221,6 +226,14 @@ footer {
 
 .grid_display {
     display: grid;
+}
+
+
+/* --- product/product details page --- */
+.welcome_note {
+    text-align: center;
+    background-color: #F0EDE0;
+    padding: 1rem;
 }
 
 /* --- misc styling --- */
@@ -412,6 +425,15 @@ a {
     .nav_font_size {
         font-size: small;
     }
+    .heb-logo {
+        display: none;
+    }
+    .inner_textbox-sizing {
+        margin: 8.5rem;
+    }
+    .welcome_note {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1549px) {
@@ -426,8 +448,41 @@ a {
     }
 }
 
-/* @media screen and (min-width: 991px) {
-    .nav_font_size {
-        font-size: small;
+@media screen and (max-width: 1199px) {
+    .dropdown-toggle {
+        padding-left: 0;
     }
-} */
+    .heb-logo-hide {
+        display: none;
+    }
+    .inner_textbox-sizing {
+        display: none;
+    }
+    .slide-sizing {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .heb-logo-sm {
+        padding-top: .5rem;
+        transform: none;
+        width: 40%;
+        left: 38%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .pagination {
+        margin-top: 2rem;
+    }
+    .welcome_note {
+        margin-top: 5rem;
+    }
+}
+
+@media screen and (max-width: 1580px) {
+    .carousel-caption {
+        bottom: -20%;
+    }
+}
