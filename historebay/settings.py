@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [os.environ.get('HOSTNAME4')]
 host = os.environ.get('SITE_HOST')
 if host:
     ALLOWED_HOSTS.append(host)
+    ALLOWED_HOSTS.append("historebay.herokuapp.com")
     ALLOWED_HOSTS.append("8000-dec804b3-2217-4b2f-9bb7-3fc85f2429e7.ws-eu01.gitpod.io")
     ALLOWED_HOSTS.append('localhost')
 
