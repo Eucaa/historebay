@@ -86,6 +86,9 @@ a:hover {
 .radius_search-btn {
     border-radius: 5px;
 }
+.radius_search-btn:hover {
+    background-color: #d8d6cf;
+}
 
 a:hover {
     text-decoration: none;
@@ -128,22 +131,34 @@ a:hover {
 /* --- body styling --- */
 
 .btn-success, .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled):active, .btn-success:hover, .btn-success:focus {
-    color: #00070F;
+    color: #F0EDE0;
     border-color: #b7860b;
     background-color: #9b7108;
     margin-bottom: 1.5rem;
 }
 
-.btn-info, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:hover, .btn-info:focus {
+.btn-success:hover {
     color: #00070F;
+}
+
+.btn-info, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled):active, .btn-info:hover, .btn-info:focus {
+    color: #F0EDE0;
     border-color: #92a10a;
     background-color: #889608;
 }
 
-.btn-primary, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:hover, .btn-primary:focus {
+.btn-info:hover {
     color: #00070F;
+}
+
+.btn-primary, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:hover, .btn-primary:focus {
+    color: #F0EDE0;
     border-color: #B7950B;
     background-color: #a7870b;
+}
+
+.btn-primary:hover {
+    color: #00070F;
 }
 
 .form-control:focus {
@@ -357,6 +372,11 @@ a {
 .position-checkout-btn {
     margin: 1.5rem;
     background-color: #e6b026;
+    color: #00070F;
+}
+
+.position-checkout-btn:hover {
+    color: #F0EDE0;
 }
 
 .submit-btn-align {
@@ -383,6 +403,7 @@ a {
 
 .delete_btn_align {
     margin-left: 2rem;
+    color: #00070F!important;
 }
 
 .delete_hover_ctrl:hover, .delete_hover_ctrl:focus, .delete_hover_ctrl:not(:disabled):not(.disabled):active, .delete_hover_ctrl:not(:disabled):not(.disabled):active {
@@ -485,4 +506,8 @@ a {
     .carousel-caption {
         bottom: -20%;
     }
+}
+
+.testing {
+    display: inline;
 }
