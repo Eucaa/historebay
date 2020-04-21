@@ -206,6 +206,17 @@ h3 {
     margin: .5rem;
 }
 
+.alert-info {
+    color: #566573;
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+}
+
+.icon-size {
+    width: 50px;
+}
+
 /* --- footer styling --- */
 
 footer {
@@ -243,21 +254,31 @@ footer {
     display: grid;
 }
 
+/* --- accounts views --- */
 
-/* --- product/product details page --- */
+.profile-align {
+    text-align: center;
+}
+
+.profileName-align {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.profileLog-align {
+    padding: 2rem;
+}
+
+.login-btn-align {
+    margin-top: 1rem;
+}
+
+/* --- product/productDetails views --- */
+
 .welcome_note {
     text-align: center;
     background-color: #F0EDE0;
     padding: 1rem;
-}
-
-/* --- misc styling --- */
-
-.alert-info {
-    color: #566573;
-    background-color: transparent;
-    border-color: transparent;
-    text-align: center;
 }
 
 .product {
@@ -269,75 +290,12 @@ footer {
     margin: 0 auto; /* to center a <div> within the other <div>'s.*/
 }
 
-caption p {  /* specifies the `p` in the class='caption' */
-    word-wrap: break-word;  /*to prevent text-box overflow*/
+.add-btn-align {
+    margin-left: 1rem;
 }
 
-.row-flex {
-    /* display: flex; */
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
 
-.card {
-    border-color: transparent;
-}
-
-.card-body {
-    height: 100%;
-    padding: 15px;
-    border: 1 px solid #ddd;
-}
-
-.product-description {
-    min-height: 40px;  /* statement of min-height for product description */
-}
-
-.icon-size {
-    width: 50px;
-}
-
-.ivory {
-    background-color: #F0EDE0;
-}
-
-.gold {
-    background-color: #B7950B;
-}
-
-.bronze {
-    background-color: #b7860b;
-}
-
-.pistachio {
-    background-color: #a6b70b;
-}
-
-.slateGrey {
-    color: #566573;
-}
-
-.ui-autocomplete {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: default;
-    z-index: 1050;
-}
-
-.address_table_sizing {
-    display: table-caption;
-    width: 9rem;
-}
-
-a {
-    transition: color .5s;
-    color: #b7860b;
-}
-
-.center-block {
-    transition: color .5s;
-}
+/* --- cart/checkout views --- */
 
 .total-adjust-position {
     padding: .5rem;
@@ -352,13 +310,13 @@ a {
     padding-right: .25rem;
 }
 
+.new-line-form {
+    border-color: #566573;
+}
+
 .total-adjust-position-checkout {
     padding: .5rem;
     margin-left: 2rem;
-}
-
-.new-line-form {
-    border-color: #566573;
 }
 
 .paymentfrom-align {
@@ -381,19 +339,6 @@ a {
 
 .submit-btn-align {
     margin-top: 2rem;
-}
-
-.profile-align {
-    text-align: center;
-}
-
-.profileName-align {
-    padding-top: 4rem;
-    padding-bottom: 2rem;
-}
-
-.profileLog-align {
-    padding: 2rem;
 }
 
 .remove_margin {
@@ -423,8 +368,55 @@ a {
     margin-left: 2%
 }
 
-.login-btn-align {
-    margin-top: 1rem;
+/* --- overall styling --- */
+
+caption p {  /* specifies the `p` in the class='caption' */
+    word-wrap: break-word;  /*to prevent text-box overflow*/
+}
+
+.row-flex {
+    /* display: flex; */
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    border-color: transparent;
+}
+
+.card-body {
+    height: 100%;
+    padding: 15px;
+    border: 1 px solid #ddd;
+}
+
+.product-description {
+    min-height: 40px;  /* statement of min-height for product description */
+}
+
+.ivory {
+    background-color: #F0EDE0;
+}
+
+.gold {
+    background-color: #B7950B;
+}
+
+.bronze {
+    background-color: #b7860b;
+}
+
+.pistachio {
+    background-color: #a6b70b;
+}
+
+.slateGrey {
+    color: #566573;
+}
+
+a {
+    transition: color .5s;
+    color: #b7860b;
 }
 
 .qty-input-align {
@@ -436,8 +428,15 @@ a {
     padding-top: 2rem;
 }
 
-.add-btn-align {
-    margin-left: 1rem;
+/* --- contact_info views --- */
+
+.address_table_sizing {
+    display: table-caption;
+    width: 9rem;
+}
+
+.center-block {
+    transition: color .5s;
 }
 
 /* --- screen type adjustments --- */
@@ -500,14 +499,23 @@ a {
     .welcome_note {
         margin-top: 5rem;
     }
+    .alert-info {
+        margin-top: 5rem;
+        margin-bottom: -5rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .alert-info {
+        margin-top: 5rem;
+    }
 }
 
 @media screen and (max-width: 1580px) {
     .carousel-caption {
         bottom: -20%;
     }
-}
-
-.testing {
-    display: inline;
+    .account-forms-align {
+        margin-top: 5rem;
+    }
 }
