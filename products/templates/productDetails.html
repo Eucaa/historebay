@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}  <!--take the data from the base.html file--> 
 {% load bootstrap_tags %}
+
 {% block content %}
-
 <div class="container-fluid">
-<div class="row row-flex">
+    <div class="row row-flex">
+        <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
+            <div class="card h-100">
+                <div class="card-body flex-fill">
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ productDetails.image }}')" alt="product image"> <!--By making a background image, it can fit the size of the  
+                                                                                                            <div> that it is in so that different sized images for different products 
+                                                                                                            won't end up looking mismatched in terms of size and shape.
+                                                                                                            Add a media context_processor in the setting.py file (cause there is media!).-->
+                    </div>
+                        <h3>{{ productDetails.name }}</h3>
+                        <p class="product-description">{{ productDetails.description|linebreaks }}</p>
+                        <p>Availability: {{ productDetails.availability }}</p>
+                        <p>€ {{ productDetails.price }}</p>
+                        <p>{{ categoryFromProduct.names }}</p>
+                        <p>{{ productTypeFromProduct.name }}</p>
 
-    <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
-    <div class="card h-100">
-        <div class="card-body flex-fill">
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ productDetails.image }}')"> <!--By making a background image, it can fit the size of the  
-                                                                                                      <div> that it is in so that different sized images for different products 
-                                                                                                      won't end up looking mismatched in terms of size and shape.
-                                                                                                      Add a media context_processor in the setting.py file (cause there is media!).-->
-            </div>
-            <h3>{{ productDetails.name }}</h3>
-            <p class="product-description">{{ productDetails.description|linebreaks }}</p>
-            <p>Availability: {{ productDetails.availability }}</p>
-            <p>€ {{ productDetails.price }}</p>
-            <p>{{ categoryFromProduct.names }}</p>
-            <p>{{ productTypeFromProduct.name }}</p>
-
-            <form method="POST" action="{% url 'adjust_cart_in_details' productDetails.id %}">
-                {% csrf_token %}
-                <div class="input-group">
-                <div class="input-group-prepend">In cart:</div>
-                <div class="input-group-prepend">{{ quantity }}</div>
-                    <input name="quantity" type="number" min="1" max="999" class="form-control qty-input-align" placeholder="Add"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary gold" type="submit"><span><i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></span>Adjust</button>
-                    </span>
+                    <form method="POST" action="{% url 'adjust_cart_in_details' productDetails.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">In cart:</div>
+                            <div class="input-group-prepend">{{ quantity }}</div>
+                                <input name="quantity" type="number" min="1" max="999" class="form-control qty-input-align" placeholder="Add"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary gold" type="submit"><span><i class="fa fa-pencil-square-o fa-sm" aria-hidden="true"></i></span>Adjust</button>
+                                </span>
+                        </div>
+                    </form>
                 </div>
-            </form>
-         </div>
+            </div>
+        </div>    
     </div>
-    </div>    
-</div>
 </div>
 {% endblock %}

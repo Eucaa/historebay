@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 {% load staticfiles %}
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <link rel="icon" href="{% static 'css/img/heb_icon.png' %}">
+        <link rel="icon" href="{% static 'css/img/heb_icon.png' %}" alt="company icon">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
         {% block head_js %}
@@ -21,61 +21,59 @@
         <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-color nav_font_size">
             <div class="container-fluid">
                 <div>
-                <img class="icon-size" src="{% static 'css/img/heb_icon.png' %}">
-                <a class="navbar-brand nav-color" type="submit" href="{% url 'index' %}">Home</a>
-                <img class="ml-auto logo_resize heb-logo navbar-brand heb-logo-sm" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
-                </div>
+                    <img class="icon-size" src="{% static 'css/img/heb_icon.png' %}" alt="company icon">
+                    <a class="navbar-brand nav-color" type="submit" href="{% url 'index' %}">Home</a>
+                    <img class="ml-auto logo_resize heb-logo navbar-brand heb-logo-sm" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
+                    </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <!-- <div class="container-fluid"> -->
-                        <div class="nav-item dropdown col-xs-2 btn-distance">
-                            <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categories
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for category in categories %}
-                                <a class="dropdown-item" href="{% url 'products_by_category' category.id %}">{{category.names}}</a>
-                            {% endfor %}
-                            </div>
+                    <div class="nav-item dropdown col-xs-2 btn-distance">
+                        <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for category in categories %}
+                            <a class="dropdown-item" href="{% url 'products_by_category' category.id %}">{{category.names}}</a>
+                        {% endfor %}
                         </div>
-                        <div class="nav-item dropdown col-xs-2">
-                            <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Product Types
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for productType in productTypes %}
-                                <a class="dropdown-item" href="{% url 'products_by_producttype' productType.id %}">{{productType.name}}</a>
-                            {% endfor %}
-                            </div>
+                    </div>
+                    <div class="nav-item dropdown col-xs-2">
+                        <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Product Types
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for productType in productTypes %}
+                            <a class="dropdown-item" href="{% url 'products_by_producttype' productType.id %}">{{productType.name}}</a>
+                        {% endfor %}
                         </div>
+                    </div>
 
-                        <img class="ml-auto logo_resize heb-logo-hide" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
+                    <img class="ml-auto logo_resize heb-logo-hide" src="{% static 'css/img/heb_logo2.png' %}" alt="company logo">
 
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            {% if user.is_authenticated %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                            {% else %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
-                            {% endif %}
-                            <li>
-                                <a class="ivory_text cart_size" href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
-                                    <i class="fa fa-shopping-cart"></i>cart
-                                    {% if product_count > 0 %}
-                                    <label class="bagde badge-warning">{{ product_count }}</label>
-                                    {% endif %}
-                                </a>
-                            </li>
-                            <form action="{% url 'search' %}" method="GET">
-                                <input type="text" id="search-field" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
-                                <button class="ivory radius_search-btn" type="submit">Search</button> 
-                            </form>
-                        </ul>
-                    <!-- </div> -->
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
+                        {% endif %}
+                        <li>
+                            <a class="ivory_text cart_size" href="{% url 'view_cart' %}">  <!--This will show which items are currently in your shopping cart through the view_cart function from the views.py, in the `cart` folder.-->
+                                <i class="fa fa-shopping-cart"></i>cart
+                                {% if product_count > 0 %}
+                                <label class="bagde badge-warning">{{ product_count }}</label>
+                                {% endif %}
+                            </a>
+                        </li>
+                        <form action="{% url 'search' %}" method="GET">
+                            <input type="text" id="search-field" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
+                            <button class="ivory radius_search-btn" type="submit">Search</button> 
+                        </form>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -97,6 +95,7 @@
             <!--Main area for content creation-->
         {% endblock %} 
         </div>
+
         <footer>
             <div class="row">
                 <div class="col-sm-6">
@@ -124,26 +123,26 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Find us on social media</h4>
-                        <p class="card-text">Please send us your likes, loves and stay updated on the newest items.</p>
-                        <div>
-                        <ul class="link_position">
-                            <li class="link_position">
-                            <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true"></i></a>
-                            </li>
-                            <li class="link_position">
-                            <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true"></i></a>
-                            </li>
-                            <li class="link_position">
-                            <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
+                        <div class="card-body">
+                            <h4 class="card-title">Find us on social media</h4>
+                            <p class="card-text">Please send us your likes, loves and stay updated on the newest items.</p>
+                            <div>
+                            <ul class="link_position">
+                                <li class="link_position">
+                                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true" alt="facebook icon"></i></a>
+                                </li>
+                                <li class="link_position">
+                                <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true" alt="instagram icon"></i></a>
+                                </li>
+                                <li class="link_position">
+                                <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true" alt="twitter icon"></i></a>
+                                </li>
+                            </ul>
+                            </div>
                         </div>
                     </div>
-                    </div>
                 </div>
-                </div>
+            </div>
         </footer>
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>

@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}  <!--take the data from the base.html file-->
+{% load static from staticfiles %}
 {% load bootstrap_tags %}
-{% load static from staticfiles %} 
-
 
 {% block content %}
 <div class="container-fluid">
-<div class="row row-flex">
-    {% for item in cart_items %} <!--In cart_items (context.py file) -->
-
-    <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
-    <div class="card h-100">
-        <div class="card-body flex-fill">
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"> <!--By making a background image, it can fit the size of the  
-                                                                                                      <div> that it is in so that different sized images for different products 
-                                                                                                      won't end up looking mismatched in terms of size and shape.
-                                                                                                      Add a media context_processor in the setting.py file (cause there is media!).-->
-            </div>
-            <div class="caption">  <!--The caption-class is used to view data that must be shown right above a table. This can also be set through CSS.-->
-                <h3>{{ item.product.name }}</h3>  <!--Get from the class Product(products/models.py) the name for item(the for-loop at line 18).-->
-                <p class="product-description">{{ item.product.description }}</p>  <!--class "product-description" here is a css-thingy.-->
-                <p><strong>Total items:</strong> {{ item.quantity }}</p>
-                <p><strong>Price per item:</strong> € {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
+    <div class="row row-flex">
+        {% for item in cart_items %} <!--In cart_items (context.py file) -->
+        <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
+            <div class="card h-100">
+                <div class="card-body flex-fill">
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')" alt="product image"> <!--By making a background image, it can fit the size of the  
+                                                                                                            <div> that it is in so that different sized images for different products 
+                                                                                                            won't end up looking mismatched in terms of size and shape.
+                                                                                                            Add a media context_processor in the setting.py file (cause there is media!).-->
+                    </div>
+                    <div class="caption">  <!--The caption-class is used to view data that must be shown right above a table. This can also be set through CSS.-->
+                        <h3>{{ item.product.name }}</h3>  <!--Get from the class Product(products/models.py) the name for item(the for-loop at line 18).-->
+                        <p class="product-description">{{ item.product.description }}</p>  <!--class "product-description" here is a css-thingy.-->
+                        <p><strong>Total items:</strong> {{ item.quantity }}</p>
+                        <p><strong>Price per item:</strong> € {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 </div>
 <hr>
 <div class="row total_prize_style_checkout">  <!--To view the total costs of the purchasing items.-->
@@ -42,7 +40,6 @@
         <div id="alert-message block-message error"></div>
         <div id="stripe-error-message"></div>  <!--If there is an error that comes back from Stripe, then display an error message.-->
     </div>
-
     <!--To place two forms side-by-side...-->
     <div class="form-group col-md-6">
         {{ order_form|as_bootstrap }}
@@ -50,7 +47,6 @@
     <div class="form-group col-md-6">
         {{ payment_form|as_bootstrap }}
     </div>
-
     {% csrf_token %}
     <div class="form-group col-md-12">
         <input class=" btn btn-primary gold submit-btn-align" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
