@@ -94,6 +94,8 @@ WSGI_APPLICATION = 'historebay.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+
+# For GitPod:
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -101,6 +103,7 @@ WSGI_APPLICATION = 'historebay.wsgi.application'
 #     }
 # }
 
+# For Heroku:
 DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 
 
