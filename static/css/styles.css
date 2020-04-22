@@ -102,6 +102,14 @@ a:hover {
     margin-right: 0.15rem;
 }
 
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+    z-index: 1050;
+}
+
 /* --- carousel styling --- */
 
 .inner_textbox-sizing {
@@ -203,7 +211,7 @@ h3 {
 }
 
 .input-group-prepend {
-    margin: .5rem;
+    margin: .5rem .5rem .5rem 0rem;
 }
 
 .alert-info {
@@ -294,7 +302,6 @@ footer {
     margin-left: 1rem;
 }
 
-
 /* --- cart/checkout views --- */
 
 .total-adjust-position {
@@ -343,7 +350,7 @@ footer {
 
 .remove_margin {
     margin: 0;
-    width: 12%; 
+    width: 12.5rem;
 }
 
 .delete_btn_align {
@@ -358,7 +365,7 @@ footer {
 .total_prize_style_checkout {
     background-color: #F0EDE0;
     padding-top: 1rem;
-    width: 15%;
+    width: 15rem;
     margin-left: 2%
 }
 
@@ -368,7 +375,22 @@ footer {
     margin-left: 2%
 }
 
-/* --- overall styling --- */
+/* --- contact_info views --- */
+
+.address_table_sizing {
+    display: table-caption;
+    width: 9rem;
+}
+
+.center-block {
+    transition: color .5s;
+}
+
+.contact-form-position {
+    margin-bottom: .5rem;
+}
+
+/* --- additional styling --- */
 
 caption p {  /* specifies the `p` in the class='caption' */
     word-wrap: break-word;  /*to prevent text-box overflow*/
@@ -428,15 +450,9 @@ a {
     padding-top: 2rem;
 }
 
-/* --- contact_info views --- */
-
-.address_table_sizing {
-    display: table-caption;
-    width: 9rem;
-}
-
-.center-block {
-    transition: color .5s;
+.reset-pw-btn-resize, .reset-pw-btn-resize:hover, .reset-pw-btn-resize:focus, .reset-pw-btn-resize:not(:disabled):not(.disabled):active, .reset-pw-btn-resize:not(:disabled):not(.disabled):active {
+    margin: 0;
+    padding: .2rem .6rem;
 }
 
 /* --- screen type adjustments --- */
@@ -502,6 +518,15 @@ a {
     .alert-info {
         margin-top: 5rem;
         margin-bottom: -5rem;
+    }
+    .delete_btn_align {
+        margin-left: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .content-margin {
+        margin-top: 5rem;
     }
 }
 
