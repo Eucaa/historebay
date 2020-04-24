@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('HOSTNAME4')]
 
@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'historebay.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-#For GitPod:
+#For Gitpod:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
