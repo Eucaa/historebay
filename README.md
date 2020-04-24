@@ -113,19 +113,22 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
     As I had to keep to true to my dealine, I will need to try and fix this issue some other time.
     This is the reason why `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'` is stil set to console and not SMTP.
 
-* To host images in your static files, I was instructed by the Institute to create a "S3 bucket" through AWS cloud services, as Heroku is not able to hold certain images that are added to the project.
-  For, this I was required the make an account at AWS. I already had two previous ones (since I hade made a previous project by using the AWS platform. However, credits kept running low quickly so I
+* To host images in your static files, I was instructed by the Institute to create a "S3 bucket" through AWS cloud services, as Heroku is not able to hold images that are not statically provided
+  through JS or CSS. This needs to be installed togther with a radically static file called WhiteNoise. WhiteNoise alone can only host the JS and CSS [static files](http://whitenoise.evans.io/en/stable/django.html#serving-media-files;). 
+  Therefore, a collaboration of both is necessary to host other images. No other explantion to get around this or any alternatives have never been given during the lessons.  
+  Because this I was required the make an account at AWS. I already had two previous ones (since I hade made a previous project by using the AWS platform. However, credits kept running low quickly so I
   had to make an extra account and thus and extra email address to be able to finish that project on the same platform or I would have lost the data), I chose one of these to start up the procedure.
   For this setup, it is necessary to give your private credit- or debit card details. This is a requirement that AWS needs to verify your account so you can open this cloud server bucket. AWS will 
   deduct a temporary amount of 0,01 cents from your private bank account and will deposit this back later.
-  Since I do not own a credit card, I tried to use my debit card details. However, my bank card does not support Mastercard or Visa etc(a bank card and credit card are really two separate things),
+  Since I do not own a credit card, I tried to use my debit card details. However, my (Dutch) bank card does not support something as Mastercard or Visa etc(a bank card and credit card are really two separate things here),
   so I was not allowed to create a bucket for myself. I have contacted Code Institute for support and ask how to solve this. Unfortunately, they could not give me any solutions and advised me to
   contact AWS help desk myself, which I did. After explaining the situation to the AWS customer service, they informed me that a debit card must also have MasterCard or Visa option for it to be able to
   work. So they couldn't really help me out either. 
-  To resolve this, an good option would be to let the Institue open a AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
-  only. The most basal option would be to at least inform future students about this issue before they start this part of the project.
-
-  All images can be viewed normally in the development area. 
+  Eventually, I have been able to find a solution for viewing my images through [base64](https://en.wikipedia.org/wiki/Base64). I have been using this options in a previous project. But the images loaded
+  slowly. I have fixed this by downsizing the sizes of the images themselves. Also, since I could not make use of the option that was provided by Code Institue themselves, I found that this was the only
+  good alternative I could think of. 
+  To resolve problems like these for future students, a good option would be to let the Institue open an AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
+  only. The most basal option would be to at least inform future students about this issue before they start this part of the project. 
 
 # Technologies Used
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
