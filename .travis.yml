@@ -4,5 +4,6 @@ python:
 install: "pip install -r requirements.txt"
 env:
   - SECRET_KEY="whatever"
+  - isTest=True
 script:
-    - python manage.py test
+    - python3 manage.py test
