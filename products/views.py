@@ -7,6 +7,7 @@ from productType.models import ProductType
 import random
 from django.http import JsonResponse
 import os
+from urllib.parse import unquote
 
 #from django.forms.models import model_to_dict
 # from cart.views import view_cart
@@ -41,8 +42,9 @@ def view_productDetails(request, pk):
     except KeyError:
         print("Item not found in cart. Setting quantity to 0.")
 
-    # if "https://" in productDetails.image:
-        # productDetails.image.path = '/media/' + productDetails.image.path
+    decodedUrl = unquote(productDetails.image.url)
+    if "https://" in decodedUrl:
+        productDetails.image.url = decodedUrl
 
     return render(request, "productDetails.html", {"productDetails": productDetails, "categories": categories, "productTypes": productTypes, "categoryFromProduct": categoryFromProduct, "productTypeFromProduct": productTypeFromProduct, "quantity": quantity})
 
