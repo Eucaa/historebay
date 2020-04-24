@@ -6,6 +6,8 @@ from categories.models import Category
 from productType.models import ProductType
 import random
 from django.http import JsonResponse
+import os
+
 #from django.forms.models import model_to_dict
 # from cart.views import view_cart
 # Create your views here.
@@ -38,6 +40,9 @@ def view_productDetails(request, pk):
         quantity = cart[pk]
     except KeyError:
         print("Item not found in cart. Setting quantity to 0.")
+
+    # if "https://" in productDetails.image:
+        # productDetails.image.path = '/media/' + productDetails.image.path
 
     return render(request, "productDetails.html", {"productDetails": productDetails, "categories": categories, "productTypes": productTypes, "categoryFromProduct": categoryFromProduct, "productTypeFromProduct": productTypeFromProduct, "quantity": quantity})
 
