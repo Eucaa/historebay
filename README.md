@@ -130,6 +130,9 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
   To resolve problems like these for future students, a good option would be to let the Institue open an AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
   only. The most basal option would be to at least inform future students about this issue before they start this part of the project. 
 
+  * When on the reset password page, it is not possible to open the dropdown of categories and productType. Since the password reset function is a build-in Django function that has been set through the url_reset.py file and does not have
+    any view to adjust it's functionality (plus having to keept true to my deadline). I have not been able to find a solution for this yet. So this will need to get picked up later.
+
 # Technologies Used
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
     - This project uses HTML to build the foundation of the web application and includes links to [_Bootstrap_](https://getbootstrap.com/docs/4.4/getting-started/introduction/), Bootstrap JS, CSS, and Font Awesome.
