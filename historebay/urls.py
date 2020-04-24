@@ -29,6 +29,7 @@ import os
 
 
 urlpatterns = [
+    url(r'^static/admin/(?P<path>.*)$', static.serve, {'document_root': os.path.join(BASE_DIR, "static")}), 
     url(r'^admin/', admin.site.urls),
     url(r'^$', listing, name='index'),  # If there's no name after the slash/ in the URL, then just display all_products of the very first page.
     url(r'^accounts/', include(urls_accounts)),
