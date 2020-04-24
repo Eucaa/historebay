@@ -225,6 +225,14 @@ h3 {
     width: 50px;
 }
 
+.form-control {
+    padding: .375rem .4rem;
+}
+
+.add-align {
+    margin-left: 1rem;
+}
+
 /* --- footer styling --- */
 
 footer {
@@ -298,9 +306,6 @@ footer {
     margin: 0 auto; /* to center a <div> within the other <div>'s.*/
 }
 
-.add-btn-align {
-    margin-left: 1rem;
-}
 
 /* --- cart/checkout views --- */
 
@@ -328,10 +333,6 @@ footer {
 
 .paymentfrom-align {
     margin: 1rem;
-}
-
-.payment-legend-align {
-    margin-left: 1rem;
 }
 
 .position-checkout-btn {
@@ -448,7 +449,7 @@ a {
     color: #b7860b;
 }
 
-.qty-input-align {
+.input-align {
     margin-right: 1rem;
 }
 
@@ -461,6 +462,7 @@ a {
     margin: 0;
     padding: .2rem .6rem;
 }
+
 
 /* --- screen type adjustments --- */
 
@@ -477,6 +479,9 @@ a {
     .welcome_note {
         display: none;
     }
+    .add-align {
+        margin-left: 2rem;
+}
 }
 
 @media screen and (min-width: 1549px) {

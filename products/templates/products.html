@@ -60,7 +60,7 @@
             <div class="card h-100">
                 <div class="card-body flex-fill">
                 
-                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"> <!--By making a background image, it can fit the size of the  
+                    <div class="product" style="background-image: url('{{ product.get_image_data }}')"> <!--By making a background image, it can fit the size of the  
                                                                                                             <div> that it is in so that different sized images for different products 
                                                                                                             won't end up looking mismatched in terms of size and shape.
                                                                                                             Add a media context_processor in the setting.py file (cause there is media!).-->
@@ -76,7 +76,7 @@
                         {% csrf_token %}
                         <div class="input-group">
                             <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Add Quantity"/>
-                            <span class="input-group-btn add-btn-align">
+                            <span class="input-group-btn add-align">
                                 <button class="btn btn-info pistachio" type="submit">Add</button>
                             </span>
                         </div>

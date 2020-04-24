@@ -4,7 +4,6 @@ Welcome to Historebay, the safe haven for all favorite antiques and requisitions
 
 [![Build Status](https://travis-ci.org/Eucaa/historebay.svg?branch=master)](https://travis-ci.org/Eucaa/historebay)
 
-
 ## Heroku
 To see this application live with Heroku, click here: [_Historebay_](https://historebay.herokuapp.com/)
 
@@ -30,7 +29,7 @@ General User Stories:
 Wireframes:
 
 * The original wireframes have been created using Balsamiq Mockups 3. For view [_Wireframes_](https://github.com/Eucaa/historebay/blob/master/docs/Wire%20Frames%20CI.pdf).
-* The original ERD has been created in the MySQL Workbench and can be fond here: [_ERD_](https://github.com/Eucaa/historebay/blob/master/docs/Wire%20Frames%20CI.pdf).
+* The original ERD has been created in the MySQL Workbench and can be fond here: [_ERD_](https://github.com/Eucaa/historebay/blob/master/docs/ERDCI%20DB.png).
 * The original workflow has been thought the app Pencil and is show here: [_Workflow_](https://github.com/Eucaa/historebay/blob/master/docs/Workflow%20CI.pdf). 
 
 # Existing Features
@@ -132,30 +131,29 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
     - This project uses HTML to build the foundation of the web application and includes links to [_Bootstrap_](https://getbootstrap.com/docs/4.4/getting-started/introduction/), Bootstrap JS, CSS, and Font Awesome.
 * [CSS](https://www.w3schools.com/css/)
-    - This project uses CSS to style the features of the web application, including the header, footer and each page of the issue tracker. It is also used to modify Bootstrap 4 styles.
+    - This project uses CSS to style the features of the web application, including the header, footer and each page of the application. It is also used to modify Bootstrap 4 styles.
 * [Javascript](https://www.w3schools.com/js/)
-    - This project uses JavaScript to provide the functionality for the Stripe API and for the back-to-top button.
+    - This project uses JavaScript to provide the functionality for the Stripe API and for the functionality of the search field, the contact form and the carousel. The carousel JS is provided by Bootstrap 4.
 * [Python](https://www.python.org/)
-    - This project uses Python to provide the backend functionality of the issue tracker, including functions to report bugs and request features.
+    - This project uses Python to provide the backend functionality, including functions to report bugs.
 * [Django](https://www.djangoproject.com/)
-    - This project uses Django, a high-level Python Web framework for pragmatic design.
+    - This project uses Django, a Python Web framework for pragmatic design.
 * [Stripe](https://stripe.com/en-nl)
     - This project uses the Stripe payment API, providing a secure payment form for the application.
 * [JQuery](https://jquery.com/)
     - The project uses JQuery to simplify DOM manipulation.
 * [Google Fonts](https://fonts.google.com/)
-    - The project uses JQuery to simplify DOM manipulation.
+    - The project uses the font Domine as chosen letter type.
 * [Font Awesome](https://fontawesome.com/)
     - This project uses Font Awesome to provide icons for the application.
 * [WhiteNoise](http://whitenoise.evans.io/en/stable/)
-    - This project uses WhiteNoise to hose the staticfiles for Heroku. It provides radically simplified static file serving for Python web apps.
+    - This project uses WhiteNoise to host the staticfiles for Heroku.
 * [Balsamiq Mockups](https://balsamiq.com/wireframes/desktop/)
     - This project used Balsamiq Mockups for the Skeleton and Surface Plan, providing views of the web application.
 * [MySQL](https://www.mysql.com/products/workbench/)
-    - This project used Balsamiq Mockups for the creation of the ERD to shows entities (main tables) of the database and relationships between tables within that database.
+    - This project used MySQL for the creation of the ERD to show entities (main tables) of the database and relationships between tables within that database.
 * [Pencil](https://pencil.evolus.vn/)
     - This project used Pencil Project for the creation of the workflow, to show the the route that a user can experience when entering the website and making a purchase.
-
 
 # Testing
 _____
@@ -235,8 +233,8 @@ To run this app locally:
 3. Click the button 'Gitpod' in your new environment to get automatically redirected to a workspace in Gitpod.
 4. Install the correct version of Django for this project `$ pip3 install django==1.11.28`
 5. Start the project itself `$ django-admin startproject *name of project*` followed by `$ django-admin startapp accounts`. 
-4. Install requirements with pip3 install -r requirements.txt.
-5. Create an env.py file with the following:
+6. Install requirements with pip3 install -r requirements.txt.
+7. Create an env.py file with the following:
 ```
     - import os
 
@@ -246,19 +244,19 @@ To run this app locally:
         - os.environ.setdefault('DATABASE_URL', '')
 ```
 
-7. Make sure you uncomment `DATABASES ={}` for either Gitpod or Heroku in settings.py depending on where you want to view the app from.
-8. You will need to generate your own SECRETKEY. You will need to set up a Stripe account and use their testing API keys. Once you have a database set up (you can use Postgres for database on Heroku) you can uncomment os.environ.setdefault('DATABASE_URL', '') and use the key that PostgreSQL generates for you in Heroku's Config Vars.
-9. Make migrations with python3 manage.py makemigrations.
-10. Migrate with python3 manage.py migrate.
-11. Create a super user with python3 manage.py createsuperuser and follow instructions in your terminal.
-12. To run the application locally, type in python3 manage.py runserver.
+8. Make sure you uncomment `DATABASES ={}` for either Gitpod or Heroku in settings.py depending on where you want to view the app from.
+9. You will need to generate your own SECRETKEY. You will need to set up a Stripe account and use their testing API keys. Once you have a database set up (you can use Postgres for database on Heroku) you can uncomment os.environ.setdefault('DATABASE_URL', '') and use the key that PostgreSQL generates for you in Heroku's Config Vars.
+10. Make migrations with python3 manage.py makemigrations.
+11. Migrate with python3 manage.py migrate.
+12. Create a super user with python3 manage.py createsuperuser and follow instructions in your terminal.
+13. To run the application locally, type in python3 manage.py runserver.
 
 ## Heroku
 To see this application live with Heroku, click [here](https://historebay.herokuapp.com/)
 
-7. Log into Heroku and Create New App. Create a unique name and region (USA or Europe, whichever is closest to you).
-8. Navigate to Resources and search for 'PostgreSQL' - choose 'Hobby Dev - Free' and select 'Provision'. 
-9. Go to Settings and Reveal Config Vars - copy and paste the following keys and its values (for this particular project) into the fields.
+1. Log into Heroku and Create New App. Create a unique name and region (USA or Europe, whichever is closest to you).
+2. Navigate to Resources and search for 'PostgreSQL' - choose 'Hobby Dev - Free' and select 'Provision'. 
+3. Go to Settings and Reveal Config Vars - copy and paste the following keys and its values (for this particular project) into the fields.
     - DATABASE_URL
     - EMAIL_HOST
     - EMAIL_HOST_PASSWORD
@@ -267,14 +265,14 @@ To see this application live with Heroku, click [here](https://historebay.heroku
     - SITE_HOST
     - STRIPE_PUBLISHABLE
     - STRIPE_SECRET
-11. In Config Vars, also add `DISABLE_COLLECTSTATIC = 1` to instruct Heroku to ignore running the manage.py collecstatic command during the deployment process.
-12. Run `$ python3 manage.py makemigrations` and `$ python3 manage.py migrate`.
-13. Create a new super user for the production database with `$ python3 manage.py createsuperuser` and follow instructions in the terminal.
-14. `$ pip3 freeze > requirements.txt` to make sure requirements.txt is up to date. 
-15. Create a Procfile and add the text `web: gunicorn finalmilestone.wsgi:application` inside of it.
-16. In settings.py, comment out import env and set DEBUG = False.
-17. In Heroku, go to Deploy and select GitHub as a deployment method. Find your repository. Manually deploy the master branch. Activate automatic deploys.
-18. Add the deployed Heroku link to ALLOWED_HOSTS in settings.py and git push origin master. The Heroku app should now be working.
+4. In Config Vars, also add `DISABLE_COLLECTSTATIC = 1` to instruct Heroku to ignore running the manage.py collecstatic command during the deployment process.
+5. Run `$ python3 manage.py makemigrations` and `$ python3 manage.py migrate`.
+6. Create a new super user for the production database with `$ python3 manage.py createsuperuser` and follow instructions in the terminal.
+7. `$ pip3 freeze > requirements.txt` to make sure requirements.txt is up to date. 
+8. Create a Procfile and add the text `web: gunicorn finalmilestone.wsgi:application` inside of it.
+9. In settings.py, comment out import env and set DEBUG = False.
+10. In Heroku, go to Deploy and select GitHub as a deployment method. Find your repository. Manually deploy the master branch. Activate automatic deploys.
+11. Add the deployed Heroku link to ALLOWED_HOSTS in settings.py and git push origin master. The Heroku app should now be working.
 
 ## Development vs Deployed Version
 In the development version, Debug is set to True and the env.py file is imported into settings.py. However, in the deployed version, Debug is set to False. 
@@ -294,7 +292,8 @@ The [_Historebay logo_](https://github.com/Eucaa/historebay/blob/master/static/c
 where created by myself. The monocle used in these images comes from the free of use image source [_VHV_](https://www.vhv.rs/).
 
 The images for the carousel where taken from:
-- [Pixabay](https://pixabay.com/)
+- [Pixabay](https://pixabay.com/)\ 
+
 The images for the products where taken from:
 - [Momsforpennies](https://www.momspenniesfromheaven.com/store.php/momspennies/)
 - [Deviantart](https://www.deviantart.com/)
