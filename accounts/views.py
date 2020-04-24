@@ -141,7 +141,7 @@ def registration(request):
 
             if user:
                 auth.login(request, user)
-                messages.success(request, "Succesfully registered.")
+                messages.success(request, "Succesfully registered")
                 return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to register this account")
