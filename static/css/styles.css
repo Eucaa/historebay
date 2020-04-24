@@ -375,6 +375,14 @@ footer {
     margin-left: 2%
 }
 
+.cart_btn_margin {
+    margin-top: 2rem;
+}
+
+.text-total-margin {
+    margin-left: -.5rem;
+}
+
 /* --- contact_info views --- */
 
 .address_table_sizing {
