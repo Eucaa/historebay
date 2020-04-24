@@ -353,8 +353,7 @@ footer {
     width: 12.5rem;
 }
 
-.delete_btn_align {
-    margin-left: 2rem;
+.delete_btn_color_noChange {
     color: #00070F!important;
 }
 

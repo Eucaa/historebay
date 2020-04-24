@@ -29,9 +29,9 @@ General User Stories:
  
 Wireframes:
 
-* The original wireframes have been created using Balsamiq Mockups 3. For view [_Wireframes_]( ).
-* The original ERD has been created in the MySQL Workbench and can be fond here: [_ERD_]( ).
-* The original workflow has been thought the app Pencil and is show here: [_Workflow_]( ). 
+* The original wireframes have been created using Balsamiq Mockups 3. For view [_Wireframes_](https://github.com/Eucaa/historebay/blob/master/docs/Wire%20Frames%20CI.pdf).
+* The original ERD has been created in the MySQL Workbench and can be fond here: [_ERD_](https://github.com/Eucaa/historebay/blob/master/docs/Wire%20Frames%20CI.pdf).
+* The original workflow has been thought the app Pencil and is show here: [_Workflow_](https://github.com/Eucaa/historebay/blob/master/docs/Workflow%20CI.pdf). 
 
 # Existing Features
 * A home-function thats will re-direct the user back to the home page from where ever else they are located at that time.
@@ -66,7 +66,7 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
 * A feature I wanted to add was to actually send out an email to the registered user when they wanted to reset their password. The option will provide the user a standard email with instructions
   on how to proceed to dot so, including a temp password which could be changed when arriving in the correct view. This is a build-in function of Django. Since I needed to use Django version 
   1.11, there seem to have been a problem with generating the url to send the email. A communnication error between http and https usage. 
-  I have tried to get around this problem by using an external email service called [EmailJS](https://www.emailjs.com/), which I had used before in my cv and have also been using the create the contact form in this project.
+  I have tried to get around this problem by using an external email service called [_EmailJS_](https://www.emailjs.com/), which I had used before in my cv and have also been using the create the contact form in this project.
   However, since this is Django build-in function content, it could not correspond with eachother. The code that I used was a follow:
   ```
   $("#reset-password").submit(function(event) {
@@ -102,11 +102,11 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
     EMAIL_PORT = 587
     ```
     The above code however is an instruction related to a newer version of Django (django 2.1). It does generate the email but still not send the actual. Proof of this is generated
-    inside the [console]( ).
+    inside the [_console_](https://github.com/Eucaa/historebay/blob/master/docs/blep5.PNG).
     These logs can also be checked by using the command `$ heroku logs -a historebay --tail` in the command terminal.
     So now, the user will see the message that "a new password has been sent by email", but the email itself does not arrive.
 
-    The activation of SMTP can be done by activating a [2-step-verification](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome). However, this requires an additional access
+    The activation of SMTP can be done by activating a [_2-step-verification_](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome). However, this requires an additional access
     to a private gmail account, which I am not willing to give for this project.
     A solution for this could be that the educator provides a dummy email address there these kind of issues can be arranged upon, or perhaps make the lesson material more compatible with the current
     version of the programs and platforms you are required to work with.
@@ -122,10 +122,7 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
   Since I do not own a credit card, I tried to use my debit card details. However, my bank card does not support Mastercard or Visa etc(a bank card and credit card are really two separate things),
   so I was not allowed to create a bucket for myself. I have contacted Code Institute for support and ask how to solve this. Unfortunately, they could not give me any solutions and advised me to
   contact AWS help desk myself, which I did. After explaining the situation to the AWS customer service, they informed me that a debit card must also have MasterCard or Visa option for it to be able to
-  work. So they couldn't really help me out either. Luckily, I was able to store the necessary images for the webpage in a private database elsewhere.
-  Since the assignment stated that the webite owner is in this case the creator, the issue seems to be sort of resolved. However, this situation is not ideal. I am lucky enough to someone who can 
-  host my images for me. But if someone with the same problem (of only having a debit card without any credit card company attachments) knows no one whom maintains it's own database, they will have to
-  make big efforts to arrange an requirment that has never been touched in the lessons anywhere.
+  work. So they couldn't really help me out either. 
   To resolve this, an good option would be to let the Institue open a AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
   only. The most basal option would be to at least inform future students about this issue before they start this part of the project.
 
@@ -133,7 +130,7 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
 
 # Technologies Used
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
-    - This project uses HTML to build the foundation of the web application and includes links to [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/), Bootstrap JS, CSS, and Font Awesome.
+    - This project uses HTML to build the foundation of the web application and includes links to [_Bootstrap_](https://getbootstrap.com/docs/4.4/getting-started/introduction/), Bootstrap JS, CSS, and Font Awesome.
 * [CSS](https://www.w3schools.com/css/)
     - This project uses CSS to style the features of the web application, including the header, footer and each page of the issue tracker. It is also used to modify Bootstrap 4 styles.
 * [Javascript](https://www.w3schools.com/js/)
@@ -162,7 +159,6 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
 
 # Testing
 _____
-
 ## Manual Testing
 Below are scenarios which a user may experience while navigating the website. These have been used to manually test the application's features.
 
@@ -221,10 +217,10 @@ This website has been tested on different device screen sizes using Google Chrom
 HTML code has been passed through the official W3 Validator. Errors within the code have been corrected. CSS code has been passed through the official W3 Validator.
 
 ## Continuous Integration
-The Continuous Integration was handeled by [Travis](https://travis-ci.org/) which constantly tested my app every time when the project got pushed to GitHub.
+The Continuous Integration was handeled by [_Travis_](https://travis-ci.org/) which constantly tested my app every time when the project got pushed to GitHub.
 
 ### Testpayment
-In accordance with the instruction given by [Stripe](https://stripe.com/docs/payments/checkout), test payment can be done by inserting the following dummy card details:
+In accordance with the instruction given by [_Stripe_](https://stripe.com/docs/payments/checkout), test payment can be done by inserting the following dummy card details:
 * 4242 4242 4242 4242 (payment successful)
 * 4000000000009995 (decline of insufficient_funds)
 * 4000002500003155 (Requires authentication which, in this integration, will pop up a modal for the user to authenticate)
@@ -232,6 +228,7 @@ In accordance with the instruction given by [Stripe](https://stripe.com/docs/pay
 * Choose a month that lies in the future of the month you are currently testing in (e.g when it's June choose a month from July to December)
 
 # Deployment
+_____
 To run this app locally:
 1. Create a new repository in GitHub workspace name and description.
 2. Create a virtual environment by choosing the Code Institue Repository Template (CI student required).
@@ -257,7 +254,7 @@ To run this app locally:
 12. To run the application locally, type in python3 manage.py runserver.
 
 ## Heroku
-To see this application live with Heroku, click [here]( )
+To see this application live with Heroku, click [here](https://historebay.herokuapp.com/)
 
 7. Log into Heroku and Create New App. Create a unique name and region (USA or Europe, whichever is closest to you).
 8. Navigate to Resources and search for 'PostgreSQL' - choose 'Hobby Dev - Free' and select 'Provision'. 
@@ -286,29 +283,28 @@ The deployed version uses Heroku's PostgreSQL database whereas the development v
 
 # Credits
 _____
-
 ## Content
-The most basic setup for this app came from the lessons of Code Institue. The checkout of Stripe i used is from [stripe checkout](https://testdriven.io/blog/django-stripe-tutorial/).
-All written content is finctional, parts of the terms & conditions where produced by the [Privacy Policy Generator](https://www.privacypolicies.com/blog/ecommerce-terms-conditions/) on privacypolicies.com
+The most basic setup for this app came from the lessons of Code Institue. The checkout of Stripe i used is from [_stripe checkout_](https://testdriven.io/blog/django-stripe-tutorial/).
+All written content is finctional, parts of the terms & conditions where produced by the [_Privacy Policy Generator_](https://www.privacypolicies.com/blog/ecommerce-terms-conditions/) on privacypolicies.com
 to give these a more realistic feel. 
-The contact form sends emails via the external email service called [EmailJS](https://www.emailjs.com/).
+The contact form sends emails via the external email service called [_EmailJS_](https://www.emailjs.com/).
 
 ## Media
-The [Historebay logo](https://github.com/Eucaa/historebay/blob/master/static/css/img/heb_logo2.png) and [brand/icon](https://github.com/Eucaa/historebay/blob/master/static/css/img/heb_icon.png) 
-where created by myself. The monocle used in these images comes from the free of use image source [VHV](https://www.vhv.rs/).
+The [_Historebay logo_](https://github.com/Eucaa/historebay/blob/master/static/css/img/heb_logo2.png) and [_brand/icon_](https://github.com/Eucaa/historebay/blob/master/static/css/img/heb_icon.png) 
+where created by myself. The monocle used in these images comes from the free of use image source [_VHV_](https://www.vhv.rs/).
 
 The images for the carousel where taken from:
-    - [Pixabay](https://pixabay.com/)
+- [Pixabay](https://pixabay.com/)
 The images for the products where taken from:
-    - [Momsforpennies](https://www.momspenniesfromheaven.com/store.php/momspennies/)
-    - [Deviantart](https://www.deviantart.com/)
-    - [F2HO](https://www.collectables-f2ho.com/en/)
-    - [Pinterest](https://nl.pinterest.com/)
-    - [Express](https://www.express.co.uk/)
-    - [Reddit](https://www.reddit.com/)
-    - [RPF](https://www.therpf.com/forums/whats-new/posts/285061/)
-    - [Trocadero](https://www.trocadero.com/directory/Antiques/Regional-Art/Asian/Japanese)
-    - [Worthpoint](https://www.worthpoint.com/)
+- [Momsforpennies](https://www.momspenniesfromheaven.com/store.php/momspennies/)
+- [Deviantart](https://www.deviantart.com/)
+- [F2HO](https://www.collectables-f2ho.com/en/)
+- [Pinterest](https://nl.pinterest.com/)
+- [Express](https://www.express.co.uk/)
+- [Reddit](https://www.reddit.com/)
+- [RPF](https://www.therpf.com/forums/whats-new/posts/285061/)
+- [Trocadero](https://www.trocadero.com/directory/Antiques/Regional-Art/Asian/Japanese)
+- [Worthpoint](https://www.worthpoint.com/)
 
 ### Credits
 I would to credit the following sources for their inspiration:

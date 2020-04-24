@@ -17,7 +17,7 @@
                             <p><strong>Price:</strong> € {{ item.product.price }}</p>
                         <div class="cart_btn_margin">
                             <a href="{% url 'productDetails' item.product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
-                            <a href="{% url 'delete_from_cart' item.product.id %}" class="btn btn-success ivory delete_btn_align delete_hover_ctrl" role="button"><span><i class="fa fa-trash" aria-hidden="true"></i>Delete Item</span></a>
+                            <a href="{% url 'delete_from_cart' item.product.id %}" class="btn btn-success ivory delete_btn_color_noChange delete_hover_ctrl" role="button"><span><i class="fa fa-trash" aria-hidden="true"></i>Delete Item</span></a>
                             <!--Create a form, which will include an input where you can adjust the number of items that we wish to purchase.-->
                         <p>
                             <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">

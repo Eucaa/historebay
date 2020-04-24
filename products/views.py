@@ -42,10 +42,6 @@ def view_productDetails(request, pk):
     except KeyError:
         print("Item not found in cart. Setting quantity to 0.")
 
-    decodedUrl = unquote(productDetails.image.url)
-    if "https://" in decodedUrl:
-        productDetails.image.url = decodedUrl
-
     return render(request, "productDetails.html", {"productDetails": productDetails, "categories": categories, "productTypes": productTypes, "categoryFromProduct": categoryFromProduct, "productTypeFromProduct": productTypeFromProduct, "quantity": quantity})
 
 
