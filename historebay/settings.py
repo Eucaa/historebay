@@ -95,16 +95,17 @@ WSGI_APPLICATION = 'historebay.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-#For Gitpod:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# For Heroku:
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+if os.environ.get('isDevelopment') or os.environ.get('isTest'):
+    # For Gitpod:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    # For Heroku:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation
