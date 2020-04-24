@@ -22,14 +22,11 @@ from cart import urls as urls_cart  # From the cart folder, import the urls as u
 from search import urls as urls_search
 from checkout import urls as urls_checkout
 from django.views import static  # Import the static folder (and substance).
-from .settings import MEDIA_ROOT, BASE_DIR  # From the settings.py file, import the MEDIA_ROOT.
+from .settings import MEDIA_ROOT  # From the settings.py file, import the MEDIA_ROOT.
 from products.views import listing
 from contact_info import urls as urls_contact_info
-import os
-
 
 urlpatterns = [
-    url(r'^static/admin/(?P<path>.*)$', static.serve, {'document_root': os.path.join(BASE_DIR, "static")}), 
     url(r'^admin/', admin.site.urls),
     url(r'^$', listing, name='index'),  # If there's no name after the slash/ in the URL, then just display all_products of the very first page.
     url(r'^accounts/', include(urls_accounts)),
@@ -38,6 +35,5 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),  # Because of the use of images in media, add this specific (Django-standard) media URL.
-    url(r'^static/(?P<path>.*)$', static.serve, {'document_root': os.path.join(BASE_DIR, "static")}), 
     url(r'^contact_info/', include(urls_contact_info)),
 ]
