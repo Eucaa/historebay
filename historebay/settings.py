@@ -35,7 +35,8 @@ host = os.environ.get('SITE_HOST')
 if host:
     ALLOWED_HOSTS.append(host)
     ALLOWED_HOSTS.append("historebay.herokuapp.com")
-    ALLOWED_HOSTS.append("8000-dec804b3-2217-4b2f-9bb7-3fc85f2429e7.ws-eu01.gitpod.io")
+    ALLOWED_HOSTS.append
+    ("8000-dec804b3-2217-4b2f-9bb7-3fc85f2429e7.ws-eu01.gitpod.io")
     ALLOWED_HOSTS.append('localhost')
 
 # Application definition
@@ -105,7 +106,8 @@ if os.environ.get('isDevelopment') or os.environ.get('isTest'):
     }
 else:
     # For Heroku:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    DATABASES = {'default': dj_database_url.parse(os.environ.get(
+                 'DATABASE_URL'))}
 
 
 # Password validation
@@ -113,16 +115,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -170,4 +176,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

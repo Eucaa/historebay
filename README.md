@@ -114,7 +114,7 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
     This is the reason why `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'` is stil set to console and not SMTP.
 
 * To host images in your static files, I was instructed by the Institute to create a "S3 bucket" through AWS cloud services, as Heroku is not able to hold images that are not statically provided
-  through JS or CSS. This needs to be installed togther with a radically static file called WhiteNoise. WhiteNoise alone can only host the JS and CSS [static files](http://whitenoise.evans.io/en/stable/django.html#serving-media-files;). 
+  through JS or CSS. This needs to be installed togther with a radically static file called WhiteNoise. WhiteNoise alone can only host the JS and CSS [_static files_](http://whitenoise.evans.io/en/stable/django.html#serving-media-files;). 
   Therefore, a collaboration of both is necessary to host other images. No other explantion to get around this or any alternatives have never been given during the lessons.  
   Because this I was required the make an account at AWS. I already had two previous ones (since I hade made a previous project by using the AWS platform. However, credits kept running low quickly so I
   had to make an extra account and thus and extra email address to be able to finish that project on the same platform or I would have lost the data), I chose one of these to start up the procedure.
@@ -124,14 +124,32 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
   so I was not allowed to create a bucket for myself. I have contacted Code Institute for support and ask how to solve this. Unfortunately, they could not give me any solutions and advised me to
   contact AWS help desk myself, which I did. After explaining the situation to the AWS customer service, they informed me that a debit card must also have MasterCard or Visa option for it to be able to
   work. So they couldn't really help me out either. 
-  Eventually, I have been able to find a solution for viewing my images through [base64](https://en.wikipedia.org/wiki/Base64). I have been using this options in a previous project. But the images loaded
-  slowly. I have fixed this by downsizing the sizes of the images themselves. Also, since I could not make use of the option that was provided by Code Institue themselves, I found that this was the only
-  good alternative I could think of. 
+
+  Eventually, I have been able to find a solution for viewing my images through [_base64_](https://en.wikipedia.org/wiki/Base64). I have been using this options in a previous project. But the images loaded
+  slowly. I have fixed this by downsizing the sizes of the images themselves. However, the "after 24-hours clean-up" from Heroku still stand. and will delete the in django uploaded images either way.
+  As last resort. I have attempted to create a function in the `models.py` file of my `products` app to resolve this:
+  ```
+      def save(self, *args, **kwargs):
+        self.image_as_base64 = base64.b64encode(self.image.file.read())
+        
+        newFilename = str(uuid.uuid4())
+        with open(newFilename, 'wb') as f:
+            f.write(base64.b64decode(self.image_as_base64))
+        self.image = newFilename
+        super(Product, self).save(*args, **kwargs)
+
+    def get_image_data(self):
+        return 'data:image;base64,%s' % (self.image_as_base64)
+  ```
+  This function should store the image as a blob the field of image_as_base64 ( which is hidden from in the Django admin panel itself). The get_image_data could be used as a source in the <img> tag.
+  That way, I might have been able to "dynamically" upload images to my website without using the credit card option that is given in the course. 
+  Since I could not make use of the only option that was provided by Code Institue themselves (using a credit card optioned bank card), I found that this was the only
+  good alternative I could think of outside what has been covered during the course.
   To resolve problems like these for future students, a good option would be to let the Institue open an AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
   only. The most basal option would be to at least inform future students about this issue before they start this part of the project. 
 
-  * When on the reset password page, it is not possible to open the dropdown of categories and productType. Since the password reset function is a build-in Django function that has been set through the url_reset.py file and does not have
-    any view to adjust it's functionality (plus having to keept true to my deadline). I have not been able to find a solution for this yet. So this will need to get picked up later.
+* When on the reset password page, it is not possible to open the dropdown of categories and productType. Since the password reset function is a build-in Django function that has been set through the url_reset.py file and does not have
+  any view to adjust it's functionality (plus having to keept true to my deadline). I have not been able to find a solution for this yet. So this will need to get picked up later.
 
 # Technologies Used
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
@@ -298,7 +316,7 @@ The [_Historebay logo_](https://github.com/Eucaa/historebay/blob/master/static/c
 where created by myself. The monocle used in these images comes from the free of use image source [_VHV_](https://www.vhv.rs/).
 
 The images for the carousel where taken from:
-- [Pixabay](https://pixabay.com/)\ 
+- [Pixabay](https://pixabay.com/) 
 
 The images for the products where taken from:
 - [Momsforpennies](https://www.momspenniesfromheaven.com/store.php/momspennies/)

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}  <!--take the data from the base.html file-->
 {% load staticfiles %} 
 {% load bootstrap_tags %}
@@ -52,8 +51,6 @@
 </nav>
 
 <div class="container-fluid">
-<div class="">
-<div class="">
     <div class="row row-flex">
     {% for product in products %}
         <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
@@ -66,7 +63,9 @@
                     </div>
                     
                     <h3>{{ product.name }}</h3>
-                    <p class="product-description">{{ product.description|linebreaks }}</p>
+                    <div class="product-description">
+                        <p>{{ product.description|linebreaks }}</p>
+                    </div>
                     <p>Availability: {{ product.availability }}</p>
                     <p>€ {{ product.price }}</p>
                     <a href="{% url 'productDetails' product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
@@ -85,7 +84,5 @@
         </div>    
     {% endfor %}
     </div>
-</div>
-</div>
 </div>
 {% endblock %}

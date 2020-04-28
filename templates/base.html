@@ -10,8 +10,7 @@
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <link rel="icon" href="{% static 'css/img/heb_icon.png' %}" alt="company icon">
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+        <link rel="icon" href="{% static 'css/img/heb_icon.png' %}">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
         {% block head_js %}
         {% endblock head_js %}  <!--This will only inject the JS used in the checkout.html into here when the checkout button is clicked.-->
@@ -22,7 +21,7 @@
             <div class="container-fluid">
                 <div>
                     <img class="icon-size" src="{% static 'css/img/heb_icon.png' %}" alt="company icon">
-                    <a class="navbar-brand nav-color" type="submit" href="{% url 'index' %}">Home</a>
+                    <a class="navbar-brand nav-color" href="{% url 'index' %}">Home</a>
                     <img class="ml-auto logo_resize heb-logo navbar-brand heb-logo-sm" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
                     </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +33,7 @@
                         <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categories
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu">
                         {% for category in categories %}
                             <a class="dropdown-item" href="{% url 'products_by_category' category.id %}">{{category.names}}</a>
                         {% endfor %}
@@ -44,7 +43,7 @@
                         <button class="btn btn-secondary dropdown-toggle nav_font_size" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Product Types
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu">
                         {% for productType in productTypes %}
                             <a class="dropdown-item" href="{% url 'products_by_producttype' productType.id %}">{{productType.name}}</a>
                         {% endfor %}
@@ -69,10 +68,10 @@
                                 {% endif %}
                             </a>
                         </li>
-                        <form action="{% url 'search' %}" method="GET">
+                        <div action="{% url 'search' %}" method="GET">
                             <input type="text" id="search-field" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
                             <button class="ivory radius_search-btn" type="submit">Search</button> 
-                        </form>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -129,13 +128,13 @@
                             <div>
                             <ul class="link_position">
                                 <li class="link_position">
-                                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true" alt="facebook icon"></i></a>
+                                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="link_position">
-                                <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true" alt="instagram icon"></i></a>
+                                <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="link_position">
-                                <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true" alt="twitter icon"></i></a>
+                                <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             </div>
@@ -149,6 +148,13 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript">  /* For some possible own JS-ing, if needed */
+            //<![CDATA[
+                Stripe.publishableKey = '{{ publishable }}';
+            //]]>
+        </script>
+        <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>  <!--Specific JS, written in a stripe.js file, in a js-folder, under the static-app.-->
         <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

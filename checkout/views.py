@@ -100,7 +100,8 @@ def checkout(request):
             # If the payment was successful or not, then throw in another message.
             if customer.paid:
                 messages.error(request, "Payment successful")
-                request.session['cart'] = {}
+                request.session['cart'] = {} 
+                print('puchase complete')
                 return redirect(reverse('products'))  # This will redirect the user back to the products.html page.
             else:
                 messages.error(request, "Unable to take payment")
@@ -115,4 +116,4 @@ def checkout(request):
     categories = all_categories()
     productTypes = all_productTypes()
     # Return a view called 'checkout.html' and include the order_form and the payment_form in there.
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE, "categories": categories, "productTypes": productTypes})
+    return render(request, "checkout.html", {"categories": categories, "productTypes": productTypes, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})

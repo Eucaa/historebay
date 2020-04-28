@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}  <!--take the data from the base.html file--> 
 {% load bootstrap_tags %}
 
@@ -8,7 +7,7 @@
         <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
             <div class="card h-100">
                 <div class="card-body flex-fill">
-                    <div class="product" style="background-image: url('{{ productDetails.get_image_data }}')" alt="product image"> <!--By making a background image, it can fit the size of the  
+                    <div class="product" style="background-image: url('{{ productDetails.get_image_data }}')"> <!--By making a background image, it can fit the size of the  
                                                                                                             <div> that it is in so that different sized images for different products 
                                                                                                             won't end up looking mismatched in terms of size and shape.
                                                                                                             Add a media context_processor in the setting.py file (cause there is media!).-->

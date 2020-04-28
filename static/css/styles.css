@@ -72,9 +72,9 @@ a:hover {
     background-color: #a6b70b;
     padding-left: 3px;
     padding-right: 3px;
-    -webkit-border-raduis: 2px;
+    /* -webkit-border-raduis: 2px;
     -moz-border-raduis: 2px;
-    -o-border-raduis: 2px;
+    -o-border-raduis: 2px; */
     border-radius: 20px;
 }
 
@@ -180,7 +180,7 @@ a:hover {
 }
 
 .page-link {
-    padding: .5rem, .75rem;
+    padding: .5rem .75rem;
     line-height: 1;
     color: #00070F;
     border-radius: 15px;
@@ -311,7 +311,7 @@ footer {
 
 .total-adjust-position {
     padding: .5rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 .price-adjust-position {
@@ -414,11 +414,11 @@ caption p {  /* specifies the `p` in the class='caption' */
     border-color: transparent;
 }
 
-.card-body {
+/* .card-body {
     height: 100%;
     padding: 15px;
     border: 1 px solid #ddd;
-}
+} */
 
 .product-description {
     min-height: 40px;  /* statement of min-height for product description */

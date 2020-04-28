@@ -2,6 +2,7 @@ from django.db import models
 from categories.models import Category
 from productType.models import ProductType
 import base64
+import uuid
 
 # Create your models here.
 class Product(models.Model):  # The Model is what will create the database for the product. 
@@ -18,7 +19,13 @@ class Product(models.Model):  # The Model is what will create the database for t
         return self.name
 
     def save(self, *args, **kwargs):
-        self.image_as_base64 = base64.b64encode(self.image.file.read())
+        if self.image_as_base64 == "":
+            self.image_as_base64 = base64.b64encode(self.image.file.read())
+
+            newFilename = str(uuid.uuid4())
+            with open(newFilename, 'wb') as f:
+                f.write(base64.b64decode(self.image_as_base64))
+            self.image = newFilename
         super(Product, self).save(*args, **kwargs)
 
     def get_image_data(self):
