@@ -6,8 +6,6 @@ urlpatterns = [
     url(r'^$', view_cart, name='view_cart'),
     url(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),
     url(r'^adjust/(?P<id>\d+)', adjust_cart, name='adjust_cart'),
-    url(r'^delete-from-cart/(?P<id>\d+)', delete_from_cart, name='delete_from_cart'),
+    url(r'^delete-from-cart/(?P<id>\d+)', delete_from_cart,
+        name='delete_from_cart'),
 ]
-
-# Include the above urls as cart.urls.py in the top-level urls (ehcommerce-folder), for activation.
-# Explanation of cart.urls.py: cart(folder).urls.py(file).

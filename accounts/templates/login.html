@@ -1,4 +1,4 @@
-{% extends 'base.html' %}  <!--take the data from the base.html file--> 
+{% extends 'base.html' %}
 {% load bootstrap_tags %}
 
 {% block page_title %}Login page{% endblock %}
@@ -15,7 +15,7 @@
                 <button class="btn btn-success bronze login-btn-align" type="submit">Login</button>
             </form>
             <p>If you are new to this website or would like to buy our items, you can <a href="{% url 'registration' %}">create an account</a>.</p>
-            <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>  <!--The url is taken from the url_reset.py file-->
+            <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
         </div>
     </div>
 </div>

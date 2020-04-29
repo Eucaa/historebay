@@ -2,9 +2,6 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from categories.models import Category
 from productType.models import ProductType
-# from contexts import cart_contents
-
-# Create your views here.
 
 
 def all_categories():
@@ -19,12 +16,12 @@ def view_cart(request):
     """ A view(page) that renders the cart content. """
     categories = all_categories()
     productTypes = all_productTypes()
-    return render(request, "cart.html", {"categories": categories, "productTypes": productTypes})  # No need to pass in a dictionary of cart_contents because that context is available everywhere.
+    return render(request, "cart.html", {"categories": categories,
+                                         "productTypes": productTypes})
 
 
 def add_to_cart(request, id):
     """ Add a quantity of the specified product to the cart """
-
     quantityVal = request.POST.get('quantity')
     if quantityVal == "":
         messages.error(request, 'Add a quantity')
@@ -36,21 +33,22 @@ def add_to_cart(request, id):
         messages.error(request, 'Add a quantity')
         return redirect(reverse('index'))
 
-    quantity = int(quantityVal)  # Gets an integer from the form(context.py-file). It gives the option to increase and decrease the number of items.
+    quantity = int(quantityVal)
 
-    cart = request.session.get('cart', {})  # The cart requests the existing cart (session) if there is one, or a blank dictionary if there is nothing. This is placed it the context.py file
-    if id in cart:  # If-statement for adding two items with same id, without overwriting the value.
-        cart[id] = int(cart[id]) + quantity  # This will add a new quantity to the excisting quantity.
+    cart = request.session.get('cart', {})
+    if id in cart:
+        cart[id] = int(cart[id]) + quantity
     else:
-        cart[id] = cart.get(id, quantity)       # ... and what we add is an ID and a quantity.
+        cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
     return redirect(reverse("index"))
 
 
 def adjust_cart(request, id):
-    """ Adjusts (increase/decrease) the quantity of the specified product to the specified amount """
-    quantity = request.POST.get('quantity')  # Gets the existing quantity as an integer. Adjust what's currently in the cart in the current session, when needed.
+    """ Adjusts (increase/decrease) the quantity of the specified product
+        to the specified amount """
+    quantity = request.POST.get('quantity')
 
     quantityAdjust = request.POST.get('quantity')
     if quantityAdjust == "":
@@ -67,17 +65,18 @@ def adjust_cart(request, id):
 
     cart = request.session.get('cart', {})
 
-    # Only adjust when the quantity is greater than '0':
+    """Only adjust when the quantity is greater than '0'"""
     if quantity > 0:
         cart[id] = quantity
     else:
-        cart.pop(id)   # If there's nothing in the cart, there is nothing to adjust. So it takes out the id (.pop()) and returns back to the view_cart url-area.
+        cart.pop(id)
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
 
 def delete_from_cart(request, id):
+    """Delete item from cart by resetting to zero"""
     request.POST = request.POST.copy()
     request.POST['quantity'] = 0
     return adjust_cart(request, id)
