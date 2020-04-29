@@ -25,14 +25,6 @@ body {
     color: #F0EDE0;
 }
 
-.navbar-light .navbar-brand {
-    color: #F0EDE0;
-}
-
-.ivory_text {
-    color: #F0EDE0;
-}
-
 a:hover {
     color: #00070F;
 }
@@ -108,6 +100,14 @@ a:hover {
     left: 0;
     cursor: default;
     z-index: 1050;
+}
+
+.navbar-light .navbar-brand {
+    color: #F0EDE0;
+}
+
+.ivory_text {
+    color: #F0EDE0;
 }
 
 /* --- carousel styling --- */
@@ -371,10 +371,6 @@ footer {
     margin-left: 2%
 }
 
-.cart_btn_margin {
-    margin-top: 2rem;
-}
-
 .text-total-margin {
     margin-left: -.5rem;
 }
@@ -478,9 +474,6 @@ a {
     }
     .welcome_note {
         display: none;
-    }
-    .add-align {
-        margin-left: 2rem;
     }
 }
 
