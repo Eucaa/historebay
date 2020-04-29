@@ -21,9 +21,10 @@
             <div class="container-fluid">
                 <div>
                     <img class="icon-size" src="{% static 'css/img/heb_icon.png' %}" alt="company icon">
-                    <a class="navbar-brand nav-color" href="{% url 'index' %}">Home</a>
+                    <a class="navbar-brand nav-color" href="{% url 'index' %}"><span>Home</span>
                     <img class="ml-auto logo_resize heb-logo navbar-brand heb-logo-sm" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
-                    </div>
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,9 +50,11 @@
                         {% endfor %}
                         </div>
                     </div>
-
-                    <img class="ml-auto logo_resize heb-logo-hide" src="{% static 'css/img/heb_logo2.png' %}" alt="company logo">
-
+                    <div class="heb-logo-hide ">
+                        <a class="navbar-brand nav-color" href="{% url 'index' %}">
+                            <img class="ml-auto logo_resize navbar-brand heb-logo-lg" src="{% static 'css/img/heb_logo2.png' %}" alt="logo">
+                        </a>
+                    </div>
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>

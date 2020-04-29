@@ -3,3 +3,7 @@
 __pycache__/
 env.py
 media/images/
+.theia/
+.vscode/
+.gitpod.dockerfile
+.gitpod.yml

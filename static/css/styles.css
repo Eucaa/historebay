@@ -481,12 +481,15 @@ a {
     }
     .add-align {
         margin-left: 2rem;
-}
+    }
 }
 
 @media screen and (min-width: 1549px) {
     .nav_font_size {
         font-size: medium;
+    }
+    .heb-logo-lg {
+        margin-top: -2.5rem;
     }
 }
 
@@ -513,7 +516,7 @@ a {
 
 @media screen and (max-width: 414px) {
     .heb-logo-sm {
-        padding-top: .5rem;
+        padding-top: .2rem;
         transform: none;
         width: 40%;
         left: 38%;
@@ -554,5 +557,8 @@ a {
     }
     .account-forms-align {
         margin-top: 5rem;
+    }
+    .heb-logo-lg {
+        margin-top: -1.75rem;
     }
 }
