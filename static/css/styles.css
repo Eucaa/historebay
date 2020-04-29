@@ -272,10 +272,6 @@ footer {
 
 /* --- accounts views --- */
 
-.profile-align {
-    text-align: center;
-}
-
 .profileName-align {
     padding-top: 4rem;
     padding-bottom: 2rem;
@@ -412,6 +408,10 @@ caption p {  /* specifies the `p` in the class='caption' */
 
 .card {
     border-color: transparent;
+}
+
+.feature-align {
+    text-align: center;
 }
 
 /* .card-body {
