@@ -34,9 +34,6 @@
 <hr class="new-line-form">
 <form class="paymentfrom-align" role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">  <!--The url referes to the checkout function.-->
     <legend class="add-align">Payment Details</legend>  <!--The <legend> tag defines a caption for the <form> element.-->
-    <!--A <div> created for credit card issues that might come back.-->
-    
-    <!--To place two forms side-by-side...-->
     <div class="form-group col-md-6">
         {{ order_form|as_bootstrap }}
         {{ payment_form|as_bootstrap }}

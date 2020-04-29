@@ -248,8 +248,6 @@ The Continuous Integration was handeled by [_Travis_](https://travis-ci.org/) wh
 ### Testpayment
 In accordance with the instruction given by [_Stripe_](https://stripe.com/docs/payments/checkout), test payment can be done by inserting the following dummy card details:
 * 4242 4242 4242 4242 (payment successful)
-* 4000000000009995 (decline of insufficient_funds)
-* 4000002500003155 (Requires authentication which, in this integration, will pop up a modal for the user to authenticate)
 * CCV: 125 (but you can use anything really, as long as it's not any longer than 3 digits)
 * Choose a month that lies in the future of the month you are currently testing in (e.g when it's June choose a month from July to December)
 
