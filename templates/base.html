@@ -71,10 +71,10 @@
                                 {% endif %}
                             </a>
                         </li>
-                        <div action="{% url 'search' %}" method="GET">
+                        <form action="{% url 'search' %}" method="GET">
                             <input type="text" id="search-field" name="q" placeholder="I'm looking for...">  <!--The 'q' is the name that was given to the search bar in the 'search'-folder/ views.py-file-->
                             <button class="ivory radius_search-btn" type="submit">Search</button> 
-                        </div>
+                        </form>
                     </ul>
                 </div>
             </div>
