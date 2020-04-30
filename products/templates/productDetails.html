@@ -10,11 +10,21 @@
                     <div class="product" style="background-image: url('{{ productDetails.get_image_data }}')">
                     </div>
                         <h3>{{ productDetails.name }}</h3>
-                        <p class="product-description">{{ productDetails.description|linebreaks }}</p>
-                        <p>Availability: {{ productDetails.availability }}</p>
-                        <p>€ {{ productDetails.price }}</p>
-                        <p>{{ categoryFromProduct.names }}</p>
-                        <p>{{ productTypeFromProduct.name }}</p>
+                        <div class="product-description">
+                            <p>{{ productDetails.description|linebreaks }}</p>
+                        </div>
+                        <div>
+                            <p>Availability: {{ productDetails.availability }}</p>
+                        </div>
+                        <div>
+                            <p>€ {{ productDetails.price }}</p>
+                        </div>
+                        <div>
+                            <p>{{ categoryFromProduct.names }}</p>
+                        </div>
+                        <div>
+                            <p>{{ productTypeFromProduct.name }}</p>
+                        </div>
 
                     <form method="POST" action="{% url 'adjust_cart_in_details' productDetails.id %}">
                         {% csrf_token %}

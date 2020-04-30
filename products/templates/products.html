@@ -62,8 +62,12 @@
                     <div class="product-description">
                         <p>{{ product.description|linebreaks }}</p>
                     </div>
-                    <p>Availability: {{ product.availability }}</p>
-                    <p>€ {{ product.price }}</p>
+                    <div>
+                        <p>Availability: {{ product.availability }}</p>
+                    </div>
+                    <div>
+                        <p>€ {{ product.price }}</p>
+                    </div>
                     <a href="{% url 'productDetails' product.id %}" class="btn btn-success bronze" role="button"><span><i class="#" aria-hidden="true"></i></span>Details</a>
 
                     <form method="POST" action="{% url 'add_to_cart' product.id %}">
