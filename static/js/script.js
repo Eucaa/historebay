@@ -45,28 +45,5 @@ $(document).ready(function() {
         );
         return false;
     });
-
-    // $("#reset-password").submit(function(event) {
-    //     email = $("input[name='email'").val();
-    //     resetUrl = $("input[name='reset_url'").val();
-    //     console.log(email);
-    //     console.log(resetUrl);
-    //     emailjs.send("gmail", "password_reset_request", {
-    //         "from_email": email,
-    //         "reset_url": resetUrl
-    //     },"user_r7tdLbadZRBs7vClusXBr")
-    //     .then(
-    //         function(response) {
-    //             $("#emailaddress").val("");
-    //             $(".alert").removeClass('hide').addClass('show')
-    //             document.location = "/"
-    //             console.log("SUCCESS", response);
-    //         },
-    //         function(error) {
-    //             console.log("FAILED", error);
-    //         }
-    //     );
-    //     return false;
-    // });
 });
 

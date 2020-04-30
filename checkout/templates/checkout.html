@@ -1,24 +1,21 @@
-{% extends 'base.html' %}  <!--take the data from the base.html file-->
+{% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
 {% block content %}
 <div class="container-fluid">
     <div class="row row-flex content-margin">
-        {% for item in cart_items %} <!--In cart_items (context.py file) -->
-        <div class="col-lg-4 d-fill"> <!--Different column sizes for different screen sizes.-->
+        {% for item in cart_items %}
+        <div class="col-lg-4 d-fill">
             <div class="card h-100">
                 <div class="flex-fill">
-                    <div class="product" style="background-image: url('{{ item.product.get_image_data }}')"> <!--By making a background image, it can fit the size of the  
-                                                                                                            <div> that it is in so that different sized images for different products 
-                                                                                                            won't end up looking mismatched in terms of size and shape.
-                                                                                                            Add a media context_processor in the setting.py file (cause there is media!).-->
+                    <div class="product" style="background-image: url('{{ item.product.get_image_data }}')">
                     </div>
-                    <div class="caption">  <!--The caption-class is used to view data that must be shown right above a table. This can also be set through CSS.-->
-                        <h3>{{ item.product.name }}</h3>  <!--Get from the class Product(products/models.py) the name for item(the for-loop at line 18).-->
-                        <p class="product-description">{{ item.product.description }}</p>  <!--class "product-description" here is a css-thingy.-->
+                    <div class="caption">
+                        <h3>{{ item.product.name }}</h3>
+                        <p class="product-description">{{ item.product.description }}</p>
                         <p><strong>Total items:</strong> {{ item.quantity }}</p>
-                        <p><strong>Price per item:</strong> € {{ item.product.price }}</p>  <!--Get from the class Product(products/models.py) the price for item(the for-loop at line 18).-->
+                        <p><strong>Price per item:</strong> € {{ item.product.price }}</p>
                     </div>
                 </div>
             </div>
@@ -27,20 +24,20 @@
     </div>
 </div>
 <hr>
-<div class="row total_prize_style_checkout">  <!--To view the total costs of the purchasing items.-->
+<div class="row total_prize_style_checkout">
     <p class="total-adjust-position-checkout"><strong class="text-total-margin">Total price:</strong></p>
     <p class="price-adjust-position"><span><i class="fa fa-eur fa-sm" aria-hidden="true"></i></span>{{ total }}</p>
 </div>
 <hr class="new-line-form">
-<form class="paymentfrom-align" role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">  <!--The url referes to the checkout function.-->
-    <legend class="add-align">Payment Details</legend>  <!--The <legend> tag defines a caption for the <form> element.-->
+<form class="paymentfrom-align" role="form" method="POST" id="payment-form" action="{% url 'checkout' %}">
+    <legend class="add-align">Payment Details</legend>
     <div class="form-group col-md-6">
         {{ order_form|as_bootstrap }}
         {{ payment_form|as_bootstrap }}
     </div>
-    <div id="credit-card-errors" style="display:none;">  <!--It's better to place the style of "display:none; into CSS.-->
+    <div id="credit-card-errors" style="display:none;">
         <div id="alert-message block-message error"></div>
-        <div id="stripe-error-message"></div>  <!--If there is an error that comes back from Stripe, then display an error message.-->
+        <div id="stripe-error-message"></div>
     </div>
     {% csrf_token %}
     <div class="form-group col-md-12">
@@ -49,6 +46,6 @@
 </form>
 {% endblock %}
 
-{% block head_js %}  <!--The head_js contains JS code that Stripe requires to be functional.-->
+{% block head_js %}
 
 {% endblock %}

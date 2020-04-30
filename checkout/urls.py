@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import checkout  # From the views.py file(in the checkout-folder), import the checkout-function.
+from .views import checkout
 
 urlpatterns = [
     url(r'^$', checkout, name='checkout'),

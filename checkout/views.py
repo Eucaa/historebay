@@ -1,17 +1,18 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.contrib.auth.decorators import login_required  # Because customers needs to be logged in when they purchase something, import `auth.decorators`.
-from django.contrib import messages  # To be able to show the error message as written on line 49.
-from .forms import OrderForm, MakePaymentForm  # These are imported from the forms.py file.
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import OrderForm, MakePaymentForm
 from .models import OrderLineItem
-from django.conf import settings  # Import settings.py to get the Stripe key/value settings from the settings.py file.
+from django.conf import settings
 from django.utils import timezone
-from products.models import Product  # From the products app(folder), import the class Product to activate line 29 below here.
+from products.models import Product
 from categories.models import Category
 from productType.models import ProductType
 import stripe
 
-# Create your views here.
-# Requires the API's of Stripe, which are set in the settings.py file.
+"""
+Requires the API's of Stripe, which are set in the settings.py file.
+"""
 stripe.api_key = settings.STRIPE_SECRET
 
 
@@ -24,6 +25,9 @@ def all_productTypes():
 
 
 def check_input_fields(request, order_form):
+    """
+    Creates the form to fill in the data for the payment
+    """
     lastName = order_form['last_name'].value()
     firstName = order_form['first_name'].value()
     streetAddress1 = order_form['street_address1'].value()
@@ -55,65 +59,70 @@ def check_input_fields(request, order_form):
 
 @login_required()
 def checkout(request):
+    """
+    This method will check the validity of the filled in data and the data of
+    what is in the cart.
+    A payment will commence once the cart details have been calculated.
+    """
     if request.method == "POST":
-        order_form = OrderForm(request.POST)  # The order form is what contains their name, address, and so on.
+        order_form = OrderForm(request.POST)
 
-        # Check if all my inputs are valid.
         if check_input_fields(request, order_form) is False:
             payment_form = MakePaymentForm()
-            return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+            return render(request, "checkout.html",
+                          {"order_form": order_form,
+                           "payment_form": payment_form,
+                           "publishable": settings.STRIPE_PUBLISHABLE})
 
-        payment_form = MakePaymentForm(request.POST)  # The payment form is what contains the credit card or debit card details.
-        # when the order_form and payment_form are both valid(filled in correctly), then the order_form will be saved as an order.
+        payment_form = MakePaymentForm(request.POST)
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
-            order.date = timezone.now()  # Notes the time when the button was clicked to confirm the order.
-            order.save()  # actually save the order
+            order.date = timezone.now()
+            order.save()
 
-            # Get the data from the cart, from the current session, to check which items are being purchased.
-            cart = request.session.get('cart', {})  # Start at 0 and loop over the ID and the quantity of the cart.items to get the products.
+            cart = request.session.get('cart', {})
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
                 product.availability = product.availability - quantity
-                total += quantity * product.price  # Get the total, add a quantity and multiply by the product price. This will give the total price.
-                order_line_item = OrderLineItem(  # Get the above created objects and combine them with the OrderLineItem class in the models.py file...
+                total += quantity * product.price
+                order_line_item = OrderLineItem(
                     order=order,
                     product=product,
                     quantity=quantity,
                 )
-                order_line_item.save()  # ... and save them. This will show the details of what's being purchased.
+                order_line_item.save()
                 product.save()
 
-            # Using the build-in API from Stripe, try to create a customer charge...
             try:
                 customer = stripe.Charge.create(
-                    amount=int(total * 100),  # Stripe charges everything in cents, so it the total amount of cents x 100...
+                    amount=int(total * 100),
                     currency="EUR",
-                    description=request.user.email,  # When going to the Stripe dashboard, you'll be able to see who the payment came from.
+                    description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id'],
                 )
-            # ... when the payment (with use of Stripe) does not go through, then throw in an error.
+
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined")
 
-            # If the payment was successful or not, then throw in another message.
             if customer.paid:
                 messages.error(request, "Payment successful")
-                request.session['cart'] = {} 
+                request.session['cart'] = {}
                 print('puchase complete')
-                return redirect(reverse('products'))  # This will redirect the user back to the products.html page.
+                return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
             print(payment_form.errors)
-            messages.error(request, "Unable to take a payment with this card")  # This else: is to cover the `if order_form.is_valid() and payment_form.is_valid():' -loop on line 22. 
+            messages.error(request, "Unable to take a payment with this card")
 
-    else:  # Return a blank form (cover for if-loop on line 17)
+    else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
 
     categories = all_categories()
     productTypes = all_productTypes()
-    # Return a view called 'checkout.html' and include the order_form and the payment_form in there.
-    return render(request, "checkout.html", {"categories": categories, "productTypes": productTypes, "order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html",
+                  {"categories": categories, "productTypes": productTypes,
+                   "order_form": order_form, "payment_form": payment_form,
+                   "publishable": settings.STRIPE_PUBLISHABLE})
