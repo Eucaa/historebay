@@ -120,6 +120,12 @@ A lot of issues have been solved and committed to GitHub on a very regular basis
 * When on the reset password page, it is not possible to open the dropdown of categories and productType. Since the password reset function is a build-in Django function that has been set through the url_reset.py file and does not have
   any view to adjust it's functionality (plus having to keept true to my deadline). I have not been able to find a solution for this yet. So this will need to get picked up later.
 
+* When running the html through the validator, I will get an error of `No p element in scope but a p end tag seen.`. This "mystery `<p>`" is not seen on the webpage itself. But when using the devtool, 
+  there is a extra `<p>` [_tag shown_](https://github.com/Eucaa/historebay/blob/master/docs/blep6.PNG). I can turn it off in the devtools, but I cannot find it in my html anywhere. An attempted has been made to wrap the `<p>` tags 
+  for the products information in `<div>` tags, so that html could "read" that there are no additional `<p>` as the ones that are in `<div>` tags. However, this did not solve the problem. 
+  My guess is that, because I am using the linebreaks option build-in from Django, it actually create and extra `<p>` prepare the text for an extra break. Due to my deadline, I have not been able to find a solution yet. 
+
+
 # Resolved issues
 Some of the mayor issues I was coping with, have also been cleared.
 * To host images in your static files, I was instructed by the Institute to create a "S3 bucket" through AWS cloud services, as Heroku is not able to hold images that are not statically provided
@@ -151,7 +157,7 @@ Some of the mayor issues I was coping with, have also been cleared.
     def get_image_data(self):
         return 'data:image;base64,%s' % (self.image_as_base64)
   ```
-  This function stores the images as blobs in the field of image_as_base64 ( which is hidden in the Django admin panel itself). The get_image_data could be used as a source in the < img > tag.
+  This function stores the images as blobs in the field of image_as_base64 ( which is hidden in the Django admin panel itself). The get_image_data could be used as a source in the `<img>` tag.
   That way, I have been able to "dynamically" upload images to my website without using the credit card + WhiteNoise option that is given in the course. 
   Since I could not make use of the only option that was provided by Code Institue themselves (using a credit card optioned bank card), I found that this was the only
   good alternative I could think of outside of what has been covered during the course.
