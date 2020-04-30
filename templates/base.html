@@ -71,11 +71,11 @@
                                 {% endif %}
                             </a>
                         </li>
-                        <form action="{% url 'search' %}" method="GET">
-                            <input type="text" id="search-field" name="q" placeholder="I'm looking for...">
-                            <button class="ivory radius_search-btn" type="submit">Search</button> 
-                        </form>
                     </ul>
+                    <form class="form-position" action="{% url 'search' %}" method="GET">
+                        <input type="text" id="search-field" name="q" placeholder="I'm looking for...">
+                        <button class="ivory radius_search-btn" type="submit">Search</button> 
+                    </form>
                 </div>
             </div>
         </nav>
@@ -105,16 +105,16 @@
                         <div>
                         <ul class="link_position grid_display">
                             <li class="link_position">
-                            <a class="ivory_text" target="_blank" href="{% url 'about' %}">About</a>
+                                <a class="ivory_text" target="_blank" href="{% url 'about' %}">About</a>
                             </li>
                             <li class="link_position">
-                            <a class="ivory_text" target="_blank" href="{% url 'tac' %}">Terms & Conditions</a>
+                                <a class="ivory_text" target="_blank" href="{% url 'tac' %}">Terms & Conditions</a>
                             </li>
                             <li class="link_position">
-                            <a class="ivory_text" target="_blank" href="{% url 'pac' %}">Privacy & Cookies</a>
+                                <a class="ivory_text" target="_blank" href="{% url 'pac' %}">Privacy & Cookies</a>
                             </li>
                             <li class="link_position">
-                            <a class="ivory_text" target="_blank" href="{% url 'contact' %}">Contact</a>
+                                <a class="ivory_text" target="_blank" href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
                         </div>
@@ -129,13 +129,13 @@
                             <div>
                             <ul class="link_position">
                                 <li class="link_position">
-                                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="link_position">
-                                <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="https://www.instagram.com/"><i class="fa fa-instagram fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                                 <li class="link_position">
-                                <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true"></i></a>
+                                    <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter-square fa-filler fa-3x" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                             </div>
