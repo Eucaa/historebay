@@ -387,8 +387,16 @@ footer {
     transition: color .5s;
 }
 
-.contact-form-position {
+.form-position {
     margin-bottom: .5rem;
+}
+
+.general_content_position {
+    margin-top: 6rem;
+}
+
+.about-text-align {
+    text-align: center;
 }
 
 /* --- additional styling --- */
@@ -418,7 +426,7 @@ caption p {  /* specifies the `p` in the class='caption' */
 } */
 
 .product-description {
-    min-height: 40px;  /* statement of min-height for product description */
+    min-height: 6rem;  /* statement of min-height for product description */
 }
 
 .ivory {
