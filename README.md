@@ -49,11 +49,14 @@ Wireframes:
 * Checkout option - a button to refer to the payment view.
 * Payment option - a button to confirm and proceed with purchase.
 * Re-direct user to register - this function automatically redirects the unregistered user to the login screen where they can either log in to their account or continue further to create one to purchase products from Historebay.
-* Profile - allows the user to see their profile which is registered in the database. 
+* Profile - allows the user to see their profile which is registered in the database.
+* Opening new tab to read general info of Historebay - when clicking on either the About, Terms & Conditions, Privacy & Cookies or Contact page. A new tab with the chosen information will be openend.
+  This way, the user will be able to shop futher for items while being able to read about general conditions of Historebay at the same time. 
 
 ## Features Left to Implement
 * Favorite option - to let users favorite a product. 
-* Broad description of product - on the details page only, a more broad description of a product it's whereabouts, origin and previous owners can be given.
+* Broad description of product - on the details page only, a more broad description of a product it's whereabouts, origin and previous owners can be given. Thus, also widening the max amount of characters
+  that a description can have.
 * A suggestion option - if a registered user adds a product to their cart, a suggested and related product could be shown via related tags that the products might have.
 * Newsletter Subscription - there could be a newsletter to inform registered user about newly arrived products on the page.
 * Online chat with Historebay - an online chat with Historebay where registered users can contact historebay directly.
@@ -148,12 +151,17 @@ Some of the mayor issues I was coping with, have also been cleared.
     def get_image_data(self):
         return 'data:image;base64,%s' % (self.image_as_base64)
   ```
-  This function stores the images as blobs in the field of image_as_base64 ( which is hidden in the Django admin panel itself). The get_image_data could be used as a source in the <img> tag.
+  This function stores the images as blobs in the field of image_as_base64 ( which is hidden in the Django admin panel itself). The get_image_data could be used as a source in the < img > tag.
   That way, I have been able to "dynamically" upload images to my website without using the credit card + WhiteNoise option that is given in the course. 
   Since I could not make use of the only option that was provided by Code Institue themselves (using a credit card optioned bank card), I found that this was the only
   good alternative I could think of outside of what has been covered during the course.
   To resolve problems like these for future students, a good option would be to let the Institue open an AWS account where students can apply for a bucket, or provide a credit card number that can be used specifically for this project part
   only. The most basal option would be to at least inform future students about this issue before they start this part of the project.
+
+* This one is partially resolved: The card option from Bootstrap 4.4 that I have been using that contains the textfield with the description of the product itself wasn't stretching evenly. This resulted into unevenly heights of the cards
+  themselves. This is not a problem for the likes of e.g. iPhone and iPad sizes, as the products are viewed in a vertical way. However, you could see the difference in height on pc-screens. I have been able to give this a 
+  fix my adding a class to the div that covers the paragraph that holds the product description and giving it a min-height. This looks good for pc screens, but a solution for for instance an iPad Pro or
+  Laptop with Touch still needs to be found.
 
 # Technologies Used
 * [HTML5](https://www.w3schools.com/html/html5_intro.asp)
@@ -240,7 +248,7 @@ Below are scenarios which a user may experience while navigating the website. Th
 This website has been tested on different device screen sizes using Google Chrome Developer Tools so that this website functions responsively on all device screen sizes.
 
 ## Code Validation
-HTML code has been passed through the official W3 Validator. Errors within the code have been corrected. CSS code has been passed through the official W3 Validator.
+HTML code has been passed through the official W3 Validator. All errors have been dealth with apart from one (see Known Issues). CSS code has been passed through the official W3 Validator.
 
 ## Continuous Integration
 The Continuous Integration was handeled by [_Travis_](https://travis-ci.org/) which constantly tested my app every time when the project got pushed to GitHub.
