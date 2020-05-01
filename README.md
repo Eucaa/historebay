@@ -284,8 +284,7 @@ To run this app locally:
         - os.environ.setdefault('SECRET_KEY', '')
         - os.environ.setdefault('DATABASE_URL', '')
 ```
-
-8. Create an if-statement in your `settings.py` so `DATABASES ={}` can be used for both Gitpod or Heroku, depending on where you want to view the app from. This function can look as followed:
+8. Create an if-statement in your `settings.py` so `DATABASES ={}` can be used for both Gitpod or Heroku, depending on where you want to view the app from. This function can look as follows:
 ```
     if os.environ.get('isDevelopment') or os.environ.get('isTest'):
         # For Gitpod:
@@ -295,10 +294,13 @@ To run this app locally:
                 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
             }
         }
+        DEBUG = True
     else:
         # For Heroku:
         DATABASES = {'default': dj_database_url.parse(os.environ.get(
                     'DATABASE_URL'))}
+
+        DEBUG = False
 ```
 9. You will need to generate your own `SECRETKEY`. You will need to set up a Stripe account and use their testing API keys. Also put the key that PostgreSQL generates for you in your Heroku's Config Vars.
 10. Make migrations with `$ python3 manage.py makemigrations`.
@@ -320,14 +322,13 @@ To see this application live with Heroku, click [here](https://historebay.heroku
     - SITE_HOST
     - STRIPE_PUBLISHABLE
     - STRIPE_SECRET
-4. In Config Vars, also add `DISABLE_COLLECTSTATIC = 1` to instruct Heroku to ignore running the [_manage.py_](https://github.com/Eucaa/historebay/blob/master/manage.py) collectstatic command during the deployment process.
-5. Run `$ python3 manage.py makemigrations` and `$ python3 manage.py migrate`.
-6. Create a new super user for the production database with `$ python3 manage.py createsuperuser` and follow instructions in the terminal.
-7. `$ pip3 freeze > requirements.txt` to make sure `requirements.txt` is up to date. 
-8. Create a Procfile and add the text `web: gunicorn finalmilestone.wsgi:application` inside of it.
-9. In `settings.py`, comment out import env and set `DEBUG = False`.
-10. In Heroku, go to Deploy and select GitHub as a deployment method. Find your repository. Manually deploy the master branch. Activate automatic deploys.
-11. Add the deployed Heroku link to `ALLOWED_HOSTS` in `settings.py` and git push origin master. The Heroku app should now be working.
+4. Run `$ python3 manage.py makemigrations` and `$ python3 manage.py migrate`.
+5. Create a new super user for the production database with `$ python3 manage.py createsuperuser` and follow instructions in the terminal.
+6. `$ pip3 freeze > requirements.txt` to make sure `requirements.txt` is up to date. 
+7. Create a Procfile and add the text `web: gunicorn finalmilestone.wsgi:application` inside of it.
+8. In `settings.py`, comment out import env and set `DEBUG = False`.
+9. In Heroku, go to Deploy and select GitHub as a deployment method. Find your repository. Manually deploy the master branch. Activate automatic deploys.
+10. Add the deployed Heroku link to `ALLOWED_HOSTS` in `settings.py` and git push origin master. The Heroku app should now be working.
 
 ## Development vs Deployed Version
 The env.py file is not pushed to GitHub or Heroku as this contains keys which need to remain hidden from other users. 
