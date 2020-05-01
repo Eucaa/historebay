@@ -399,6 +399,14 @@ footer {
     text-align: center;
 }
 
+.alert {
+    margin-top: 6rem;
+}
+
+.no-top {
+    margin-top: 0;
+}
+
 /* --- additional styling --- */
 
 caption p {  /* specifies the `p` in the class='caption' */
